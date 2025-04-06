@@ -85,6 +85,7 @@ const VerifyOTP = () => {
 
       // Redirect based on API response
       if (data.redirectTo) {
+        console.log("data", data);
         navigate(data.redirectTo, { state: { email } });
       }
     } catch (error) {
