@@ -172,6 +172,7 @@ exports.login = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
+  console.log("Logout hit");
   res.clearCookie('token', {
     httpOnly: true, // Prevent client-side access for security
     secure: true, // Ensure HTTPS is used
