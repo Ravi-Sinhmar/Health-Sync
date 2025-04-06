@@ -82,7 +82,6 @@ const VerifyOTP = () => {
       }
 
       toast.success('OTP verified successfully');
-
       // Redirect based on API response
       if (data.redirectTo) {
         console.log("data", data);
