@@ -196,9 +196,7 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
   }
 });
 
-// Add index for better query performance
-ComprehensiveStudentSchema.index({ email: 1 });
-ComprehensiveStudentSchema.index({ admissionNumber: 1 });
+
 
 // BMI calculation and health status middleware
 ComprehensiveStudentSchema.pre('save', function(next) {
