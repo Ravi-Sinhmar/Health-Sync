@@ -201,10 +201,19 @@ exports.verifyOTP = async (req, res) => {
     // Handle password reset flow
     if (isPasswordReset) {
       await OTP.deleteOne({ _id: otpRecord._id }); // Delete OTP
-
+      const user = await Student.findOneAndUpdate(
+        { email },
+        { isVerified: true },
+        { new: true } // Return the updated document
+      );
+      const token = jwt.sign({ id: user._id, email : user.email}, process.env.JWT_SECRET || "your_jwt_secret", {
+        expiresIn: "1d",
+      });
       return res.status(200).json({
         message: "OTP verified successfully.",
-        redirectTo: "/set-password", // Redirect to set-password page
+        redirectTo: "/set-password", 
+        token : token
+        // Redirect to set-password page
       });
     }
 
