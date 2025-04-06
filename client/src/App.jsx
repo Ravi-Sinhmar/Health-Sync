@@ -140,9 +140,7 @@ function App() {
             <Route
               path="/set-password"
               element={
-                
                   <SetPassword />
-                
               }
             />
             <Route
