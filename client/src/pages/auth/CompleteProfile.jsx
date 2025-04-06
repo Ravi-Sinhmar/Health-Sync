@@ -120,14 +120,13 @@ const CompleteProfile = () => {
       })
 
       const data = await response.json()
-
       if (!response.ok) {
         throw new Error(data.message || "Failed to save profile")
       }
 
       toast.success("Profile completed successfully");
       setIsAuthenticated(true);
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       toast.error(error.message || "Failed to save profile")
     } finally {
