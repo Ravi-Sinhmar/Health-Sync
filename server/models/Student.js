@@ -30,8 +30,8 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    min: 5,
-    max: 100
+    // min: 0,
+    // max: 100
   },
   dob: {
     type: String
@@ -75,13 +75,13 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
   // Health metrics
   height: {
     type: Number,
-    min: 100,
-    max: 250
+    // min: 100,
+    // max: 250
   },
   weight: {
     type: Number,
-    min: 20,
-    max: 200
+    // min: 20,
+    // max: 200
   },
   bmi: {
     type: Number
@@ -160,13 +160,13 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
   },
   physicalActivity: {
     type: Number,
-    min: 0,
-    max: 168
+    // min: 0,
+    // max: 168
   },
   sleepHours: {
     type: Number,
-    min: 0,
-    max: 24
+    // min: 0,
+    // max: 24
   },
   mentalHealthNotes: {
     type: String
