@@ -185,9 +185,9 @@ exports.logout = (req, res) => {
 
 exports.verifyOTP = async (req, res) => {
   try {
-    const { email, otp, isPasswordReset } = req.body; // Add flag to request body
+    const { email, otp, isPasswordReset } = req.body; // Flag to distinguish flows
 
-    // Find OTP in database
+    // Find OTP in the database
     const otpRecord = await OTP.findOne({
       email,
       otp,
@@ -198,33 +198,30 @@ exports.verifyOTP = async (req, res) => {
       return res.status(400).json({ message: "Invalid or expired OTP" });
     }
 
+    // Handle password reset flow
     if (isPasswordReset) {
-      // Delete used OTP
-      await OTP.deleteOne({ _id: otpRecord._id });
+      await OTP.deleteOne({ _id: otpRecord._id }); // Delete OTP
 
-      // Redirect to set-password page for password reset
       return res.status(200).json({
         message: "OTP verified successfully.",
-        redirectTo: "/set-password",
+        redirectTo: "/set-password", // Redirect to set-password page
       });
     }
 
-    // Update user verification status for signup
+    // Normal signup flow: Update user verification status
     const user = await Student.findOneAndUpdate(
       { email },
       { isVerified: true },
-      { new: true } // Return updated document
+      { new: true } // Return the updated document
     );
 
-    // Delete used OTP
-    await OTP.deleteOne({ _id: otpRecord._id });
+    await OTP.deleteOne({ _id: otpRecord._id }); // Delete OTP
 
-    // Set auth cookie for verified user
-    setAuthCookie(res, user._id, user.email);
+    setAuthCookie(res, user._id, user.email); // Set auth cookie
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "Email verified successfully.",
-      redirectTo: "/profile", // Redirect to profile for normal signup
+      redirectTo: "/profile", // Redirect to profile page
       user: {
         id: user._id,
         email: user.email,
@@ -232,13 +229,13 @@ exports.verifyOTP = async (req, res) => {
     });
   } catch (error) {
     console.error("OTP verification error:", error);
-    res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
 exports.resendOTP = async (req, res) => {
   try {
-    const { email, isPasswordReset } = req.body; // Add flag to indicate password reset
+    const { email, isPasswordReset } = req.body; // Flag for password reset
 
     // Check if user exists
     const user = await Student.findOne({ email });
@@ -249,38 +246,36 @@ exports.resendOTP = async (req, res) => {
     // Delete any existing OTPs for this email
     await OTP.deleteMany({ email });
 
-    // Generate new OTP
+    // Generate a new OTP
     const otp = generateOTP();
 
-    // Save OTP to database with password reset flag
+    // Save OTP to the database with the password reset flag
     const newOTP = new OTP({
       email,
       otp,
       expiresAt: new Date(Date.now() + 10 * 60 * 1000), // 10 minutes
-      isPasswordReset: isPasswordReset || false, // Save flag
+      isPasswordReset: isPasswordReset || false, // Flag defaults to false
     });
     await newOTP.save();
 
-    // Send OTP to user's email
-    await sendOTPEmail(email, otp);
+    await sendOTPEmail(email, otp); // Send OTP via email
 
-    res.status(200).json({
+    return res.status(200).json({
       message: isPasswordReset
         ? "Password reset OTP sent successfully."
         : "OTP resent successfully.",
     });
   } catch (error) {
     console.error("Resend OTP error:", error);
-    res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: "Server error" });
   }
 };
-
 
 exports.forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
 
-    // Check if user exists
+    // Check if the user exists
     const user = await Student.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "User not found" });
@@ -289,27 +284,27 @@ exports.forgotPassword = async (req, res) => {
     // Delete any existing OTPs for this email
     await OTP.deleteMany({ email });
 
-    // Generate new OTP
+    // Generate a new OTP
     const otp = generateOTP();
 
-    // Save OTP to database
+    // Save OTP with password reset flag
     const newOTP = new OTP({
       email,
       otp,
       expiresAt: new Date(Date.now() + 10 * 60 * 1000), // 10 minutes
-      isPasswordReset: true,
+      isPasswordReset: true, // Flag for password reset
     });
     await newOTP.save();
 
-    // Send OTP to user's email
-    await sendOTPEmail(email, otp);
+    await sendOTPEmail(email, otp); // Send OTP via email
 
-    res.status(200).json({ message: "Password reset OTP sent successfully" });
+    return res.status(200).json({ message: "Password reset OTP sent successfully." });
   } catch (error) {
     console.error("Forgot password error:", error);
-    res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: "Server error" });
   }
 };
+
 
 exports.resetPassword = async (req, res) => {
   try {

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
-import Input from "../../components/ui/Input"
-import Button from "../../components/ui/Button"
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import Input from "../../components/ui/Input";
+import Button from "../../components/ui/Button";
 import apiConfig from './../../config/api';
 
 const VerifyOTP = () => {
@@ -13,37 +13,30 @@ const VerifyOTP = () => {
   const [isResending, setIsResending] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const [error, setError] = useState('');
-  
+
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const email = location.state?.email || '';
-  
+  const isPasswordReset = location.state?.isPasswordReset || false; // Get flag from route state
+
   useEffect(() => {
-    // if (!email) {
-    //   navigate('/register');
-    //   return;
-    // }
-    
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime <= 1) {
           clearInterval(timer);
-          return 0
-        }
-        if (prevTime <= 1) {
-          clearInterval(timer);
           return 0;
         }
-        return prevTime - 1});
+        return prevTime - 1;
+      });
     }, 1000);
-    
+
     return () => clearInterval(timer);
-  }, [email, navigate]);
-  
+  }, [email]);
+
   const handleResendOTP = async () => {
     setIsResending(true);
-    
+
     try {
       // API call to resend OTP
       await fetch(`${apiConfig.baseURL}/auth/resend-otp`, {
@@ -51,9 +44,9 @@ const VerifyOTP = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, isPasswordReset }), // Pass flag to indicate password reset
       });
-      
+
       setTimeLeft(120); // Reset timer
       toast.success('OTP resent successfully');
     } catch (error) {
@@ -62,17 +55,17 @@ const VerifyOTP = () => {
       setIsResending(false);
     }
   };
-  
+
   const handleVerifyOTP = async (e) => {
     e.preventDefault();
-    
+
     if (!otp) {
       setError('Please enter the OTP');
       return;
     }
-    
+
     setIsVerifying(true);
-    
+
     try {
       // API call to verify OTP
       const response = await fetch(`${apiConfig.baseURL}/auth/verify-otp`, {
@@ -80,24 +73,28 @@ const VerifyOTP = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, otp }),
+        body: JSON.stringify({ email, otp, isPasswordReset }), // Pass flag to backend
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         throw new Error(data.message || 'Invalid OTP');
       }
-      
-      toast.success('Email verified successfully');
-      navigate('/complete-profile', { state: { email } });
+
+      toast.success('OTP verified successfully');
+
+      // Redirect based on API response
+      if (data.redirectTo) {
+        navigate(data.redirectTo, { state: { email } });
+      }
     } catch (error) {
       setError(error.message || 'Failed to verify OTP');
     } finally {
       setIsVerifying(false);
     }
   };
-  
+
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -161,4 +158,3 @@ const VerifyOTP = () => {
 };
 
 export default VerifyOTP;
-
