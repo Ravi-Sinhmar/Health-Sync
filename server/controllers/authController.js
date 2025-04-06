@@ -47,6 +47,8 @@ const setAuthCookie = (res, userId, email) => {
   const token = jwt.sign({ id: userId, email }, process.env.JWT_SECRET || "your_jwt_secret", {
     expiresIn: "1d",
   });
+  console.log("Node_ENV is this",process.env.NODE_ENV);
+  console.log("URL in cookies is this ",URL);
 
   res.cookie('token', token, {
     httpOnly: true,
