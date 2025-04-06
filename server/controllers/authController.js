@@ -54,7 +54,7 @@ const setAuthCookie = (res, userId, email) => {
     sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000, // 1 day
     domain:
-      process.env.NODE_ENV === "Production" ? URL : undefined,
+      process.env.NODE_ENV == "Production" ? URL : undefined,
   });
 };
 
