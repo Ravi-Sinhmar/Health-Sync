@@ -1,12 +1,15 @@
 const Support = require("../models/Support")
 const nodemailer = require("nodemailer")
 const Student = require("../models/Student")
+const dotenv = require("dotenv")
+dotenv.config()
+
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER,
+    user: process.env.FROM_EMAIL,
     pass: process.env.EMAIL_PASS,
   },
 })
@@ -39,8 +42,8 @@ exports.sendSupportMessage = async (req, res) => {
 
     // Send email to company
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.COMPANY_EMAIL || process.env.EMAIL_USER, // Use company email from env or fallback to sender
+      from: process.env.FROM_EMAIL,
+      to: process.env.TO_EMAIL, // Use company email from env or fallback to sender
       subject: `Help and Support Query: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px;">

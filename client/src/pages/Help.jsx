@@ -32,9 +32,9 @@ const Help = () => {
       // API call to send support message
       const response = await fetch(`${apiConfig.baseURL}/support/message`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({ subject, message }),
       })

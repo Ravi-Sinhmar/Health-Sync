@@ -25,7 +25,7 @@ const generateOTP = () => {
 // Send OTP via email
 const sendOTPEmail = async (email, otp) => {
   const mailOptions = {
-    from: 'techboi.1424@gmail.com',
+    from: process.env.FROM_EMAIL,
     to: email,
     subject: "Verification Code for Health Tracker",
     html: `
