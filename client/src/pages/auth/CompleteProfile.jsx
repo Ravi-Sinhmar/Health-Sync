@@ -105,7 +105,7 @@ const CompleteProfile = () => {
       }
 
       // API call to save student profile
-      const response = await fetch(`http://localhost:5000/students/save`, {
+      const response = await fetch(`${apiConfig.baseURL}/students/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

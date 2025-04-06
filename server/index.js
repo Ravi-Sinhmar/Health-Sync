@@ -7,9 +7,13 @@ const studentRoutes = require("./routes/students")
 const supportRoutes = require("./routes/support")
 const cookieParser = require('cookie-parser');
 const test = require('./models/test');
+dotenv.config()
+
+const URL = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
+
 
 // Load environment variables
-dotenv.config()
+
 
 // Initialize Express app
 const app = express()
@@ -17,7 +21,7 @@ const PORT = process.env.PORT || 5000
 
 // CORS configuration
 const corsOptions = {
-  origin: 'http://localhost:5173', // Your frontend URL
+  origin: URL, // Your frontend URL
   credentials: true, // This is crucial
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']

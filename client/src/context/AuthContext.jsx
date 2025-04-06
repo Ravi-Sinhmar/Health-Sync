@@ -2,6 +2,8 @@
 
 import { createContext, useContext, useState, useEffect } from "react"
 
+import apiConfig from './config/api';
+
 const AuthContext = createContext()
 
 export const useAuth = () => useContext(AuthContext)
@@ -14,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("http://localhost:5000/auth/check", {
+        const response = await fetch(`${apiConfig.baseURL}/auth/check`, {
           method: "GET",
           credentials: 'include', // Important for cookies
         })
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const response = await fetch(`${apiConfig.baseURL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +68,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:5000/auth/signup", {
+      const response = await fetch(`${apiConfig.baseURL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +91,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch("http://localhost:5000/auth/logout", {
+      await fetch(`${apiConfig.baseURL}/auth/logout`, {
         method: "POST",
         credentials: 'include', // Important for cookies
       })

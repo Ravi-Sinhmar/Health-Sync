@@ -28,7 +28,7 @@ const Help = () => {
 
     try {
       // API call to send support message
-      const response = await fetch("http://localhost:5000/support/message", {
+      const response = await fetch(`${apiConfig.baseURL}/support/message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

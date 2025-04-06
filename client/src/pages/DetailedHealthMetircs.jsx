@@ -36,7 +36,7 @@ const DetailedHealthMetrics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/students/profile`, {
+        const response = await fetch(`${apiConfig.baseURL}/students/profile`, {
           method: "GET",
           credentials: 'include',
           headers: {

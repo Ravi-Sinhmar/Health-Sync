@@ -45,7 +45,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/students/profile`, {
+        const response = await fetch(`${apiConfig.baseURL}/students/profile`, {
             method: "GET",
             credentials: 'include',
             headers: {
@@ -96,13 +96,12 @@ const EditProfile = () => {
       [name]: value,
     }))
   }
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSaving(true)
-
     try {
-      const response = await fetch("http://localhost:5000/students/profile/edit", {
+      const response = await fetch(`${apiConfig.baseURL}/students/profile/edit`, {
         method: "PUT",
         credentials: 'include',
         headers: {

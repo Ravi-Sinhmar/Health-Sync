@@ -47,7 +47,7 @@ const HealthEdit = () => {
           throw new Error("Student ID is required")
         }
 
-        const response = await fetch(`http://localhost:5000/health/edit?id=${studentId}`)
+        const response = await fetch(`${apiConfig.baseURL}/health/edit?id=${studentId}`)
 
         if (!response.ok) {
           throw new Error("Failed to fetch student health data")
@@ -94,7 +94,7 @@ const HealthEdit = () => {
     setError(null)
 
     try {
-      const response = await fetch("http://localhost:5000/health/edit", {
+      const response = await fetch(`${apiConfig.baseURL}/health/edit`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -23,7 +23,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         // API call to fetch users
-        const response = await fetch("http://localhost:5000/students", {
+        const response = await fetch(`${apiConfig.baseURL}/students`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
     try {
       // API call to send reset password OTP
-      const response = await fetch("http://localhost:5000/auth/forgot-password", {
+      const response = await fetch(`${apiConfig.baseURL}/auth/forgot-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
