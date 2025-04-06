@@ -55,10 +55,10 @@ const setAuthCookie = (res, userId, email) => {
   // Set the cookie
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "Production", // Use HTTPS in production
+    secure: ture, // Use HTTPS in production
     sameSite: 'none', // Required for cross-origin cookies
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-    domain: process.env.NODE_ENV === "Production" ? 'health-sync-pro.vercel.app' : undefined, // Frontend domain
+    domain: 'health-sync-pro.vercel.app' // Frontend domain
   });
   
 };
