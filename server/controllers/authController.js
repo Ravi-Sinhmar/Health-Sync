@@ -3,15 +3,17 @@ const jwt = require("jsonwebtoken");
 const OTP = require("../models/OTP");
 const nodemailer = require("nodemailer");
 const Student = require("../models/Student");
+const dotenv = require("dotenv")
+dotenv.config()
 const URL = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
-
+console.log("URL is this",URL);
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "techboi.1424@gmail.com",
-    pass: "mmog fqmq slzt dnzl",
+    user: process.env.FROM_EMAIL,
+    pass: process.env.EMAIL_PASS,
   },
 });
 

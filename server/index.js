@@ -2,12 +2,13 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const dotenv = require("dotenv")
+dotenv.config()
 const authRoutes = require("./routes/auth")
 const studentRoutes = require("./routes/students")
 const supportRoutes = require("./routes/support")
 const cookieParser = require('cookie-parser');
 const test = require('./models/test');
-dotenv.config()
+
 
 const URL = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
 
