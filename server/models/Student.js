@@ -29,9 +29,7 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
     trim: true
   },
   age: {
-    type: Number,
-    // min: 0,
-    // max: 100
+    type: Number
   },
   dob: {
     type: String
@@ -60,7 +58,6 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
   },
   admissionNumber: {
     type: String,
-    unique: true,
     trim: true
   },
   course: {
@@ -74,14 +71,10 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
 
   // Health metrics
   height: {
-    type: Number,
-    // min: 100,
-    // max: 250
+    type: Number
   },
   weight: {
-    type: Number,
-    // min: 20,
-    // max: 200
+    type: Number
   },
   bmi: {
     type: Number
@@ -159,14 +152,10 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
     default: []
   },
   physicalActivity: {
-    type: Number,
-    // min: 0,
-    // max: 168
+    type: Number
   },
   sleepHours: {
-    type: Number,
-    // min: 0,
-    // max: 24
+    type: Number
   },
   mentalHealthNotes: {
     type: String
@@ -196,17 +185,16 @@ const ComprehensiveStudentSchema = new mongoose.Schema({
   }
 });
 
-
+// Add index for email only (since admissionNumber is no longer unique)
+ComprehensiveStudentSchema.index({ email: 1 });
 
 // BMI calculation and health status middleware
 ComprehensiveStudentSchema.pre('save', function(next) {
-  // Calculate BMI if height and weight exist
   if (this.height && this.weight) {
     const heightInMeters = this.height / 100;
     this.bmi = parseFloat((this.weight / (heightInMeters * heightInMeters)).toFixed(1));
   }
 
-  // Update metric statuses based on values
   const updateMetricStatus = (value, normalRange) => {
     if (value === undefined || value === null) return 'normal';
     if (value < normalRange[0]) return 'low';
@@ -214,7 +202,6 @@ ComprehensiveStudentSchema.pre('save', function(next) {
     return 'normal';
   };
 
-  // Define normal ranges for metrics
   const normalRanges = {
     bloodPressureSystolic: [90, 120],
     bloodPressureDiastolic: [60, 80],
@@ -223,7 +210,6 @@ ComprehensiveStudentSchema.pre('save', function(next) {
     oxygenSaturation: [95, 100]
   };
 
-  // Update status for each metric
   if (this.bloodPressure?.systolic?.value !== undefined) {
     this.bloodPressure.systolic.status = updateMetricStatus(
       this.bloodPressure.systolic.value,
@@ -259,7 +245,6 @@ ComprehensiveStudentSchema.pre('save', function(next) {
     );
   }
 
-  // Determine overall health status
   const metricsToCheck = [
     this.bloodPressure?.systolic?.status,
     this.bloodPressure?.diastolic?.status,
