@@ -50,10 +50,11 @@ const setAuthCookie = (res, userId, email) => {
 
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: process.env.NODE_ENV == "Production",
+    sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-    domain: process.env.NODE_ENV === 'production' ? URL : undefined
+    domain:
+      process.env.NODE_ENV === "Production" ? URL : undefined,
   });
 };
 
@@ -166,8 +167,8 @@ exports.login = async (req, res) => {
 exports.logout = (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict'
+    secure: process.env.NODE_ENV == 'Production',
+    sameSite: 'none'
   });
   res.status(200).json({ message: "Logged out successfully" });
 };

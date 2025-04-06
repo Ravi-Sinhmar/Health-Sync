@@ -2,6 +2,11 @@ const Student = require("../models/Student")
 const HealthData = require("../models/HealthData")
 const jwt = require('jsonwebtoken');
 
+const dotenv = require("dotenv")
+dotenv.config()
+const URL = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
+
+
 exports.saveStudentProfile = async (req, res) => {
   try {
     const {
@@ -76,11 +81,11 @@ exports.saveStudentProfile = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: process.env.NODE_ENV == "Production",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
       domain:
-        process.env.NODE_ENV === "production" ? ".yourdomain.com" : undefined,
+        process.env.NODE_ENV === "Production" ? URL : undefined,
     });
 
     res.status(201).json({
