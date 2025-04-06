@@ -133,16 +133,7 @@ const Header = () => {
                                     <span>Help & Support</span>
                                 </Link>
                             </li>
-                            <li>
-                                <Link
-                                    to="/select-metrics"
-                                    className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
-                                    onClick={closeNav}
-                                >
-                                    <Settings className="h-5 w-5 mr-3" />
-                                    <span>Health Metrics</span>
-                                </Link>
-                            </li>
+                   
                         </ul>
                     </nav>
 
