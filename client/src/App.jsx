@@ -113,8 +113,6 @@ function App() {
                 </PublicRoute>
               }
             />
-
-          
             <Route
               path="/register"
               element={
@@ -142,9 +140,9 @@ function App() {
             <Route
               path="/set-password"
               element={
-                <PublicRoute>
+                
                   <SetPassword />
-                </PublicRoute>
+                
               }
             />
             <Route
