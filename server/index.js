@@ -21,15 +21,11 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // CORS configuration
-const corsOptions = {
-  origin: URL, // Your frontend URL
-  credentials: true, // This is crucial
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+app.use(cors({
+  origin: 'https://health-sync-pro.vercel.app', // Frontend domain
+  credentials: true, // Allow cookies
+}));
 
-};
-
-// Middleware
-app.use(cors(corsOptions))
 // Add this after your CORS middleware
 app.use(cookieParser());
 app.use(express.json())

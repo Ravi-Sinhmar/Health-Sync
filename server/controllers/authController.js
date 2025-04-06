@@ -47,18 +47,22 @@ const setAuthCookie = (res, userId, email) => {
   const token = jwt.sign({ id: userId, email }, process.env.JWT_SECRET || "your_jwt_secret", {
     expiresIn: "1d",
   });
-  console.log("Node_ENV is this",process.env.NODE_ENV);
-  console.log("URL in cookies is this ",URL);
 
+  // Log environment and URL for debugging
+  console.log("Node_ENV is this", process.env.NODE_ENV);
+  console.log("URL in cookies is this", URL);
+
+  // Set the cookie
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV == "Production",
-    samesite : 'lax',
+    secure: process.env.NODE_ENV === "Production", // Use HTTPS in production
+    sameSite: 'none', // Required for cross-origin cookies
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-    domain:
-      process.env.NODE_ENV == "Production" ? URL : undefined,
+    domain: process.env.NODE_ENV === "Production" ? 'health-sync-pro.vercel.app' : undefined, // Frontend domain
   });
+  
 };
+
 
 // Controller methods
 exports.checkAuth = async (req, res) => {
