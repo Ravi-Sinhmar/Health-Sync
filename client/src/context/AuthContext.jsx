@@ -42,28 +42,29 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch(`${apiConfig.baseURL}/auth/login`, {
+      const response = await fetch(`https://health-sync-backend-1r73.onrender.com/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-        credentials: 'include', // Important for cookies
-      })
-
-      const data = await response.json()
-
+        credentials: 'include', // Ensures cross-origin cookies
+      });
+  
+      const data = await response.json();
+  
       if (!response.ok) {
-        throw new Error(data.message || "Login failed")
+        throw new Error(data.message || "Login failed");
       }
-
-      setCurrentUser(data.user)
-      setIsAuthenticated(true)
-      return data
+  
+      setCurrentUser(data.user);
+      setIsAuthenticated(true);
+      return data;
     } catch (error) {
-      throw error
+      throw error;
     }
-  }
+  };
+  
 
   const signup = async (email, password) => {
     try {

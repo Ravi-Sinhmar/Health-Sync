@@ -26,6 +26,12 @@ app.use(cors({
   credentials: true, // Allow cookies
 }));
 
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Origin", "https://health-sync-pro.vercel.app"); // Frontend URL
+  next();
+});
 // Add this after your CORS middleware
 app.use(cookieParser());
 app.use(express.json())

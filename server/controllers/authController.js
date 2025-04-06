@@ -54,14 +54,14 @@ const setAuthCookie = (res, userId, email) => {
 
   // Set the cookie
   res.cookie('token', token, {
-    httpOnly: true,
-    secure: true, // Use HTTPS in production
+    httpOnly: true, // Prevent client-side access for security
+    secure: true, // Ensure HTTPS is used
     sameSite: 'none', // Required for cross-origin cookies
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-    domain: 'health-sync-pro.vercel.app' // Frontend domain
+    domain: undefined, // Let the browser automatically use the correct domain
   });
-  
 };
+
 
 
 // Controller methods
