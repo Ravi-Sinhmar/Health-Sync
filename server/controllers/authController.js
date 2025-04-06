@@ -222,7 +222,7 @@ exports.verifyOTP = async (req, res) => {
 
     return res.status(200).json({
       message: "Email verified successfully.",
-      redirectTo: "/profile", // Redirect to profile page
+      redirectTo: "/complete-profile", // Redirect to profile page
       user: {
         id: user._id,
         email: user.email,
