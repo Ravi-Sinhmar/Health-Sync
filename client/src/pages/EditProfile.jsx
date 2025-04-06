@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import Card from "../components/ui/Card"
 import Button from "../components/ui/Button"
-import apiConfig from './config/api';
+import apiConfig from '../config/api';
 import {
   FaUser,
   FaArrowLeft,
