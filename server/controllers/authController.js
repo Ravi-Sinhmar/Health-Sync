@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const OTP = require("../models/OTP");
 const nodemailer = require("nodemailer");
 const Student = require("../models/Student");
+const URL = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
+
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
@@ -49,7 +51,7 @@ const setAuthCookie = (res, userId, email) => {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-    domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined
+    domain: process.env.NODE_ENV === 'production' ? URL : undefined
   });
 };
 
