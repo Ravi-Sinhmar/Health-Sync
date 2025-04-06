@@ -24,7 +24,7 @@ const corsOptions = {
   origin: URL, // Your frontend URL
   credentials: true, // This is crucial
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+
 };
 
 // Middleware
