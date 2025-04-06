@@ -337,11 +337,6 @@ const Users = () => {
                       <Button variant="outline" size="sm" className="mr-2" onClick={closeUserDetails}>
                         Close
                       </Button>
-                      <Link to={`/health-metrics/${selectedUser.email}`}>
-                        <Button variant="primary" size="sm">
-                          View Full Health Data
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
