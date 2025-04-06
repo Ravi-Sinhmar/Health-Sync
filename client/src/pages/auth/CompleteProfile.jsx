@@ -7,6 +7,7 @@ import Input from "../../components/ui/Input"
 import Select from "../../components/ui/Select"
 import Button from "../../components/ui/Button"
 import { useAuth } from "../../context/AuthContext"
+import apiConfig from './../../config/api';
 
 const CompleteProfile = () => {
   const {setIsAuthenticated} = useAuth();

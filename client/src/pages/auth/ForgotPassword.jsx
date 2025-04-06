@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
 import Input from "../../components/ui/Input"
 import Button from "../../components/ui/Button"
+import apiConfig from './../../config/api';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("")

@@ -5,7 +5,7 @@ import Card from "../components/ui/Card"
 import Button from "../components/ui/Button"
 import { Mail, MessageCircle, HelpCircle, FileText, Phone } from "react-feather"
 import toast from "react-hot-toast"
-import apiConfig from './config/api';
+import apiConfig from '../config/api';
 
 const Help = () => {
   const [message, setMessage] = useState("")

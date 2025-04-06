@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import Button from "../components/ui/Button"
 import Card from "../components/ui/Card"
-import apiConfig from './config/api';
+import apiConfig from './../config/api';
 import { Search, ChevronLeft, ChevronRight } from "react-feather"
 import toast from "react-hot-toast"
 

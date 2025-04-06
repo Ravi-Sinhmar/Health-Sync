@@ -6,6 +6,7 @@ import { useAuth } from "../../context/AuthContext"
 import toast from "react-hot-toast"
 import Input from "../../components/ui/Input"
 import Button from "../../components/ui/Button"
+import apiConfig from './../../config/api';
 
 const Login = () => {
   const [email, setEmail] = useState("")

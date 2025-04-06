@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import Card from "../components/ui/Card"
-import apiConfig from './config/api';
+import apiConfig from '../config/api';
 import HealthStatusBox from "../components/ui/HealthStatusBox"
 import {
   FaWeight,
