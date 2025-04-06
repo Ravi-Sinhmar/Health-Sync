@@ -1,47 +1,50 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
-import Input from "../../components/ui/Input"
-import Button from "../../components/ui/Button"
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import Input from "../../components/ui/Input";
+import Button from "../../components/ui/Button";
 import apiConfig from './../../config/api';
 
 const SetPassword = () => {
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [errors, setErrors] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const location = useLocation()
-  const navigate = useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const email = location.state?.email || ""
-  const token = location.state?.token || ""
+  const email = location.state?.email || "";
+  const token = location.state?.token || "";
 
-  if (!email || !token) {
-    navigate("/forgot-password")
-  }
+  // Use useEffect to check email and token only on component mount
+  useEffect(() => {
+    if (!email || !token) {
+      navigate("/forgot-password");
+    }
+  }, [email, token, navigate]);
 
   const validateForm = () => {
-    const newErrors = {}
+    const newErrors = {};
 
-    if (!password) newErrors.password = "Password is required"
-    else if (password.length < 6) newErrors.password = "Password must be at least 6 characters"
+    if (!password) newErrors.password = "Password is required";
+    else if (password.length < 6) newErrors.password = "Password must be at least 6 characters";
 
-    if (!confirmPassword) newErrors.confirmPassword = "Please confirm your password"
-    else if (password !== confirmPassword) newErrors.confirmPassword = "Passwords do not match"
+    if (!confirmPassword) newErrors.confirmPassword = "Please confirm your password";
+    else if (password !== confirmPassword) newErrors.confirmPassword = "Passwords do not match";
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!validateForm()) return
+    if (!validateForm()) return;
 
-    setIsLoading(true)
+    setIsLoading(true);
 
     try {
       // API call to reset password
@@ -51,22 +54,22 @@ const SetPassword = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, token, password }),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to reset password")
+        throw new Error(data.message || "Failed to reset password");
       }
 
-      toast.success("Password reset successfully")
-      navigate("/login")
+      toast.success("Password reset successfully");
+      navigate("/login");
     } catch (error) {
-      toast.error(error.message || "Failed to reset password")
+      toast.error(error.message || "Failed to reset password");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -107,8 +110,7 @@ const SetPassword = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SetPassword
-
+export default SetPassword;
