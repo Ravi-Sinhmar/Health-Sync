@@ -19,7 +19,6 @@ const VerifyOTP = () => {
 
   const email = location.state?.email || '';
   const isPasswordReset = location.state?.isPasswordReset || false; // Get flag from route state
-
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {

@@ -46,7 +46,7 @@ const ForgotPassword = () => {
       }
 
       toast.success("Verification code sent to your email")
-      navigate("/verify-otp", { state: { email, isForgotPassword: true } })
+      navigate("/verify-otp", { state: { email, isPasswordReset: true } });
     } catch (error) {
       toast.error(error.message || "Failed to send verification code")
     } finally {
