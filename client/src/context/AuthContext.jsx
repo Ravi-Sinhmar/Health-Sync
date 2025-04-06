@@ -1,7 +1,6 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect } from "react"
-
 import apiConfig from './config/api';
 
 const AuthContext = createContext()

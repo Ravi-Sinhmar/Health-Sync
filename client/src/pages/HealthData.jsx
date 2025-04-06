@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Save, AlertCircle } from 'lucide-react';
+import apiConfig from './config/api';
 
 const HealthForm = () => {
   const [loading, setLoading] = useState(false);
@@ -61,7 +62,7 @@ const HealthForm = () => {
   useEffect(() => {
     const fetchStudentProfile = async () => {
       try {
-        const response = await fetch('http://localhost:5000/students/profile', {
+        const response = await fetch(`${apiConfig.baseURL}/students/profile`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -187,7 +188,7 @@ const HealthForm = () => {
         dietaryRestrictions: Array.isArray(formData.dietaryRestrictions) ? formData.dietaryRestrictions : formData.dietaryRestrictions.split(',').map(item => item.trim())
       };
       
-      const response = await fetch('http://localhost:5000/students/healthdata/save', {
+      const response = await fetch(`${apiConfig.baseURL}/students/healthdata/save`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import Header from "./../components/layout/Header"
 import { Activity, Apple, Utensils, LineChart, Calendar, Award } from "lucide-react"
 import { Link } from "react-router-dom"
 
+
 const Home = () => {
   return (
     <div className="min-h-screen bg-white">

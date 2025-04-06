@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import Card from "../components/ui/Card"
 import Button from "../components/ui/Button"
+import apiConfig from './config/api';
 import HealthStatusBox from "../components/ui/HealthStatusBox"
 import {
   FaUser,

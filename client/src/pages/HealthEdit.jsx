@@ -1,8 +1,9 @@
 "use client"
 
+
 import { useState, useEffect } from "react"
 import { Save, AlertCircle, ArrowLeft } from "lucide-react"
-
+import apiConfig from './config/api';
 const HealthEdit = () => {
   const [loading, setLoading] = useState(false)
   const [fetchLoading, setFetchLoading] = useState(true)

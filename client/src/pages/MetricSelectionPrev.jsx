@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { selectedMetricsState } from '../recoil/atoms';
 import { useNavigate } from 'react-router-dom';
+
 import {
     // General Health
     FaRulerVertical, FaWeight, FaRunning,
