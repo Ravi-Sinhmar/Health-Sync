@@ -130,6 +130,7 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+  
 
     // Check if user exists
     const user = await Student.findOne({ email });
@@ -160,7 +161,7 @@ exports.login = async (req, res) => {
     });
   } catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error : error });
   }
 };
 
