@@ -173,15 +173,18 @@ exports.login = async (req, res) => {
 
 exports.logout = (req, res) => {
   res.clearCookie('token', {
-    httpOnly: true,
-    secure: process.env.NODE_ENV == 'Production',
+    httpOnly: true, // Prevent client-side access for security
+    secure: true, // Ensure HTTPS is used
+    sameSite: 'none', // Required for cross-origin cookies
+    domain: undefined, // Let the browser automatically use the correct domain
   });
+  
   res.status(200).json({ message: "Logged out successfully" });
 };
 
 exports.verifyOTP = async (req, res) => {
   try {
-    const { email, otp } = req.body;
+    const { email, otp, isPasswordReset } = req.body; // Add flag to request body
 
     // Find OTP in database
     const otpRecord = await OTP.findOne({
@@ -194,25 +197,37 @@ exports.verifyOTP = async (req, res) => {
       return res.status(400).json({ message: "Invalid or expired OTP" });
     }
 
-    // Update user verification status
+    if (isPasswordReset) {
+      // Delete used OTP
+      await OTP.deleteOne({ _id: otpRecord._id });
+
+      // Redirect to set-password page for password reset
+      return res.status(200).json({
+        message: "OTP verified successfully.",
+        redirectTo: "/set-password",
+      });
+    }
+
+    // Update user verification status for signup
     const user = await Student.findOneAndUpdate(
-      { email }, 
+      { email },
       { isVerified: true },
-      { new: true } // Return the updated document
+      { new: true } // Return updated document
     );
-  
+
     // Delete used OTP
     await OTP.deleteOne({ _id: otpRecord._id });
 
-    // Set auth cookie after verification
+    // Set auth cookie for verified user
     setAuthCookie(res, user._id, user.email);
 
-    res.status(200).json({ 
-      message: "Email verified successfully",
+    res.status(200).json({
+      message: "Email verified successfully.",
+      redirectTo: "/profile", // Redirect to profile for normal signup
       user: {
         id: user._id,
-        email: user.email
-      }
+        email: user.email,
+      },
     });
   } catch (error) {
     console.error("OTP verification error:", error);
@@ -222,7 +237,7 @@ exports.verifyOTP = async (req, res) => {
 
 exports.resendOTP = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, isPasswordReset } = req.body; // Add flag to indicate password reset
 
     // Check if user exists
     const user = await Student.findOne({ email });
@@ -236,23 +251,29 @@ exports.resendOTP = async (req, res) => {
     // Generate new OTP
     const otp = generateOTP();
 
-    // Save OTP to database
+    // Save OTP to database with password reset flag
     const newOTP = new OTP({
       email,
       otp,
       expiresAt: new Date(Date.now() + 10 * 60 * 1000), // 10 minutes
+      isPasswordReset: isPasswordReset || false, // Save flag
     });
     await newOTP.save();
 
     // Send OTP to user's email
     await sendOTPEmail(email, otp);
 
-    res.status(200).json({ message: "OTP resent successfully" });
+    res.status(200).json({
+      message: isPasswordReset
+        ? "Password reset OTP sent successfully."
+        : "OTP resent successfully.",
+    });
   } catch (error) {
     console.error("Resend OTP error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 exports.forgotPassword = async (req, res) => {
   try {

@@ -80,14 +80,13 @@ exports.saveStudentProfile = async (req, res) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV == "Production",
-      sameSite: "lax",
+      httpOnly: true, // Prevent client-side access for security
+      secure: true, // Ensure HTTPS is used
+      sameSite: 'none', // Required for cross-origin cookies
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-      domain:
-        process.env.NODE_ENV === "Production" ? URL : undefined,
+      domain: undefined, // Let the browser automatically use the correct domain
     });
-
+    
     res.status(201).json({
       message: "Student profile saved successfully",
       student,

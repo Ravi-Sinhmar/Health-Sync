@@ -372,7 +372,7 @@ const Profile = () => {
               <div className="flex justify-end p-4">
                 {hasHealthData ? (
                   <Link
-                    to="/health/edit"
+                    to="/health/save"
                     className="group flex items-center gap-1.5 text-emerald-600 hover:text-emerald-800 transition-colors"
                   >
                     <ClipboardEdit className="size-4" />
