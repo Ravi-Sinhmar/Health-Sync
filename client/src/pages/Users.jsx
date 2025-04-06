@@ -25,9 +25,11 @@ const Users = () => {
       try {
         // API call to fetch users
         const response = await fetch(`${apiConfig.baseURL}/students`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
+            method : "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
         })
 
         if (!response.ok) {
