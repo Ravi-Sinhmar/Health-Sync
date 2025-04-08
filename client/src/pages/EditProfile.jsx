@@ -192,9 +192,9 @@ const EditProfile = () => {
                     onChange={handleChange}
                     className="w-full p-2 border rounded-md text-xs"
                   >
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
                 <div className="space-y-1">

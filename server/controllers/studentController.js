@@ -191,51 +191,103 @@ exports.userData = async (req, res) => {
 };
 
 
-
 exports.getAllStudents = async (req, res) => {
   try {
-    // Get all students with basic info
-    const students = await Student.find(
-      {},
-      {
-        name: 1,
-        email: 1,
-        phone: 1,
-        instituteName: 1,
-        createdAt: 1,
-      },
-    )
+    const page = Number.parseInt(req.query.page) || 1
+    const limit = Number.parseInt(req.query.limit) || 10
+    const skip = (page - 1) * limit
+    const search = req.query.search || ""
 
-    // Get health status for each student
-    const studentsWithStatus = await Promise.all(
-      students.map(async (student) => {
-        const healthData = await HealthData.findOne({ studentEmail: student.email })
-        let healthStatus = "healthy"
+    // Build search query
+    let query = {}
+    if (search) {
+      query = {
+        $or: [
+          { name: { $regex: search, $options: "i" } },
+          { email: { $regex: search, $options: "i" } },
+          { phone: { $regex: search, $options: "i" } },
+          { instituteName: { $regex: search, $options: "i" } },
+        ],
+      }
+    }
 
-        if (healthData && healthData.metrics) {
-          // Check if any metric has abnormal status
-          const hasAbnormalMetrics = Object.values(healthData.metrics).some(
-            (metric) => metric.status === "low" || metric.status === "high",
-          )
+    // Get total count for pagination
+    const total = await Student.countDocuments(query)
 
-          if (hasAbnormalMetrics) {
-            healthStatus = "unhealthy"
-          }
-        }
+    // Get paginated students with basic info
+    const students = await Student.find(query, {
+      name: 1,
+      email: 1,
+      phone: 1,
+      instituteName: 1,
+      createdAt: 1,
+    })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
 
-        return {
-          ...student.toObject(),
-          healthStatus,
-        }
-      }),
-    )
+    // Calculate total pages
+    const totalPages = Math.ceil(total / limit)
 
-    res.status(200).json(studentsWithStatus)
+    res.status(200).json({
+      students,
+      total,
+      totalPages,
+      currentPage: page,
+      limit,
+    })
   } catch (error) {
     console.error("Get all students error:", error)
     res.status(500).json({ message: "Server error" })
   }
 }
+
+
+
+// exports.getAllStudents = async (req, res) => {
+//   try {
+//     // Get all students with basic info
+//     const students = await Student.find(
+//       {},
+//       {
+//         name: 1,
+//         email: 1,
+//         phone: 1,
+//         instituteName: 1,
+//         createdAt: 1,
+//       },
+//     )
+
+//     // Get health status for each student
+//     const studentsWithStatus = await Promise.all(
+//       students.map(async (student) => {
+//         const healthData = await HealthData.findOne({ studentEmail: student.email })
+//         let healthStatus = "healthy"
+
+//         if (healthData && healthData.metrics) {
+//           // Check if any metric has abnormal status
+//           const hasAbnormalMetrics = Object.values(healthData.metrics).some(
+//             (metric) => metric.status === "low" || metric.status === "high",
+//           )
+
+//           if (hasAbnormalMetrics) {
+//             healthStatus = "unhealthy"
+//           }
+//         }
+
+//         return {
+//           ...student.toObject(),
+//           healthStatus,
+//         }
+//       }),
+//     )
+
+//     res.status(200).json(studentsWithStatus)
+//   } catch (error) {
+//     console.error("Get all students error:", error)
+//     res.status(500).json({ message: "Server error" })
+//   }
+// }
 
 exports.getStudentProfile = async (req, res) => {
   try {

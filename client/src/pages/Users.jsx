@@ -1,11 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import Button from "../components/ui/Button"
 import Card from "../components/ui/Card"
-import apiConfig from './../config/api';
+import apiConfig from "./../config/api"
 import { Search, ChevronLeft, ChevronRight } from "react-feather"
 import toast from "react-hot-toast"
 
@@ -17,54 +16,77 @@ const Users = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedUser, setSelectedUser] = useState(null)
   const [showUserDetails, setShowUserDetails] = useState(false)
+  const [totalUsers, setTotalUsers] = useState(0)
+  const [totalPages, setTotalPages] = useState(1)
 
   const usersPerPage = 10
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        // API call to fetch users
-        const response = await fetch(`${apiConfig.baseURL}/students`, {
-            method : "GET",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-        })
+    fetchUsers(currentPage, usersPerPage, searchTerm)
+  }, [currentPage, searchTerm])
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch users")
-        }
+  const fetchUsers = async (page, limit, search = "") => {
+    try {
+      setLoading(true)
+      // API call to fetch users with pagination
+      const queryParams = new URLSearchParams({
+        page: page.toString(),
+        limit: limit.toString(),
+      })
 
-        const data = await response.json()
-        setUsers(data)
-      } catch (error) {
-        console.error("Error fetching users:", error)
-        toast.error("Failed to load users")
-
-        // Mock data for demonstration
-        setUsers(
-          Array.from({ length: 25 }, (_, i) => ({
-            id: i + 1,
-            name: `Student ${i + 1}`,
-            email: `student${i + 1}@example.com`,
-            phone: `123-456-${7890 + i}`,
-            instituteName: "Springfield High School",
-            healthStatus: i % 3 === 0 ? "unhealthy" : "healthy",
-            createdAt: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString().split("T")[0],
-          })),
-        )
-      } finally {
-        setLoading(false)
+      if (search) {
+        queryParams.append("search", search)
       }
-    }
 
-    fetchUsers()
-  }, [])
+      const response = await fetch(`${apiConfig.baseURL}/students?${queryParams.toString()}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch users")
+      }
+
+      const data = await response.json()
+      setUsers(data.students)
+      setTotalUsers(data.total)
+      setTotalPages(data.totalPages)
+    } catch (error) {
+      console.error("Error fetching users:", error)
+      toast.error("Failed to load users")
+
+      // Mock data for demonstration
+      setUsers(
+        Array.from({ length: 10 }, (_, i) => ({
+          id: i + 1,
+          name: `Student ${i + 1}`,
+          email: `student${i + 1}@example.com`,
+          phone: `123-456-${7890 + i}`,
+          instituteName: "Springfield High School",
+          createdAt: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString().split("T")[0],
+        })),
+      )
+      setTotalUsers(25)
+      setTotalPages(3)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value)
+    const value = e.target.value
+    setSearchTerm(value)
     setCurrentPage(1)
+
+    // Debounce search to avoid too many API calls
+    const timeoutId = setTimeout(() => {
+      fetchUsers(1, usersPerPage, value)
+    }, 500)
+
+    return () => clearTimeout(timeoutId)
   }
 
   const handleViewProfile = (user) => {
@@ -77,21 +99,7 @@ const Users = () => {
     setSelectedUser(null)
   }
 
-  // Filter users based on search term
-  const filteredUsers = users.filter(
-    (user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.phone.includes(searchTerm),
-  )
-
-  // Pagination
-  const indexOfLastUser = currentPage * usersPerPage
-  const indexOfFirstUser = indexOfLastUser - usersPerPage
-  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser)
-  const totalPages = Math.ceil(filteredUsers.length / usersPerPage)
-
-  if (loading) {
+  if (loading && users.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 p-6 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-violet-600"></div>
@@ -116,6 +124,12 @@ const Users = () => {
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
             </div>
           </div>
+
+          {loading && (
+            <div className="flex justify-center my-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-violet-600"></div>
+            </div>
+          )}
 
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -143,13 +157,13 @@ const Users = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Date
+                    Institute
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Status
+                    Date
                   </th>
                   <th
                     scope="col"
@@ -160,36 +174,41 @@ const Users = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {currentUsers.map((user) => (
-                  <tr key={user.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{user.name}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{user.email}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{user.phone}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{user.createdAt}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          user.healthStatus === "healthy" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-                        }`}
-                      >
-                        {user.healthStatus === "healthy" ? "Healthy" : "Unhealthy"}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button onClick={() => handleViewProfile(user)} className="text-violet-600 hover:text-violet-900">
-                        Check Profile
-                      </button>
+                {users.length > 0 ? (
+                  users.map((user) => (
+                    <tr key={user._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-medium text-gray-900">{user.name || "N/A"}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-500">{user.email}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-500">{user.phone || "N/A"}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-500">{user.instituteName || "N/A"}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-500">{new Date(user.createdAt).toLocaleDateString()}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          onClick={() => handleViewProfile(user)}
+                          className="text-violet-600 hover:text-violet-900"
+                        >
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500">
+                      No users found
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
@@ -200,11 +219,10 @@ const Users = () => {
               <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm text-gray-700">
-                    Showing <span className="font-medium">{indexOfFirstUser + 1}</span> to{" "}
-                    <span className="font-medium">
-                      {indexOfLastUser > filteredUsers.length ? filteredUsers.length : indexOfLastUser}
-                    </span>{" "}
-                    of <span className="font-medium">{filteredUsers.length}</span> results
+                    Showing{" "}
+                    <span className="font-medium">{users.length > 0 ? (currentPage - 1) * usersPerPage + 1 : 0}</span>{" "}
+                    to <span className="font-medium">{Math.min(currentPage * usersPerPage, totalUsers)}</span> of{" "}
+                    <span className="font-medium">{totalUsers}</span> results
                   </p>
                 </div>
                 <div>
@@ -219,19 +237,33 @@ const Users = () => {
                       <span className="sr-only">Previous</span>
                       <ChevronLeft className="h-5 w-5" />
                     </button>
-                    {Array.from({ length: totalPages }, (_, i) => (
-                      <button
-                        key={i + 1}
-                        onClick={() => setCurrentPage(i + 1)}
-                        className={`relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium ${
-                          currentPage === i + 1
-                            ? "z-10 bg-violet-50 border-violet-600 text-violet-600"
-                            : "text-gray-500 hover:bg-gray-50"
-                        }`}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
+                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                      // Show pages around current page
+                      let pageNum
+                      if (totalPages <= 5) {
+                        pageNum = i + 1
+                      } else if (currentPage <= 3) {
+                        pageNum = i + 1
+                      } else if (currentPage >= totalPages - 2) {
+                        pageNum = totalPages - 4 + i
+                      } else {
+                        pageNum = currentPage - 2 + i
+                      }
+
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => setCurrentPage(pageNum)}
+                          className={`relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium ${
+                            currentPage === pageNum
+                              ? "z-10 bg-violet-50 border-violet-600 text-violet-600"
+                              : "text-gray-500 hover:bg-gray-50"
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      )
+                    })}
                     <button
                       onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                       disabled={currentPage === totalPages}
@@ -293,20 +325,12 @@ const Users = () => {
                 <div className="flex flex-col sm:flex-row gap-6">
                   <div className="sm:w-1/3 flex flex-col items-center">
                     <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                      <span className="text-3xl font-bold text-gray-500">{selectedUser.name.charAt(0)}</span>
+                      <span className="text-3xl font-bold text-gray-500">
+                        {selectedUser.name ? selectedUser.name.charAt(0) : selectedUser.email.charAt(0)}
+                      </span>
                     </div>
-                    <h2 className="text-lg font-semibold text-gray-800 text-center">{selectedUser.name}</h2>
+                    <h2 className="text-lg font-semibold text-gray-800 text-center">{selectedUser.name || "N/A"}</h2>
                     <p className="text-sm text-gray-500 mb-4 text-center">{selectedUser.email}</p>
-
-                    <span
-                      className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                        selectedUser.healthStatus === "healthy"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-red-100 text-red-800"
-                      }`}
-                    >
-                      {selectedUser.healthStatus === "healthy" ? "Healthy" : "Unhealthy"}
-                    </span>
                   </div>
 
                   <div className="sm:w-2/3">
@@ -314,24 +338,17 @@ const Users = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                       <div>
                         <h4 className="text-xs font-medium text-gray-500">Phone</h4>
-                        <p className="mt-1 text-sm">{selectedUser.phone}</p>
+                        <p className="mt-1 text-sm">{selectedUser.phone || "N/A"}</p>
                       </div>
                       <div>
                         <h4 className="text-xs font-medium text-gray-500">Institute</h4>
-                        <p className="mt-1 text-sm">{selectedUser.instituteName}</p>
+                        <p className="mt-1 text-sm">{selectedUser.instituteName || "N/A"}</p>
                       </div>
                       <div>
                         <h4 className="text-xs font-medium text-gray-500">Joined Date</h4>
-                        <p className="mt-1 text-sm">{selectedUser.createdAt}</p>
+                        <p className="mt-1 text-sm">{new Date(selectedUser.createdAt).toLocaleDateString()}</p>
                       </div>
                     </div>
-
-                    <h3 className="text-md font-medium text-gray-900 mb-3">Health Summary</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      {selectedUser.healthStatus === "healthy"
-                        ? "All health metrics are within normal ranges."
-                        : "Some health metrics require attention."}
-                    </p>
 
                     <div className="flex justify-end mt-6">
                       <Button variant="outline" size="sm" className="mr-2" onClick={closeUserDetails}>
@@ -350,4 +367,3 @@ const Users = () => {
 }
 
 export default Users
-

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
-import { Menu, X, User, Heart, LogOut, HelpCircle, Home, Users, Settings } from "react-feather"
+import { Menu, X, User, Heart, LogOut, HelpCircle, Home, Users, Settings, Edit, Activity } from "react-feather"
 import Button from "../ui/Button"
 import { overlayState } from "../../recoil/atoms"
 import { useSetRecoilState } from "recoil"
@@ -111,6 +111,26 @@ const Header = () => {
                                 >
                                     <User className="h-5 w-5 mr-3" />
                                     <span>My Profile</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/profile/edit"
+                                    className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
+                                    onClick={closeNav}
+                                >
+                                    <Edit className="h-5 w-5 mr-3" />
+                                    <span>Edit Profile</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/health/save"
+                                    className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
+                                    onClick={closeNav}
+                                >
+                                    <Activity className="h-5 w-5 mr-3" />
+                                    <span>Edit Health Details</span>
                                 </Link>
                             </li>
                             <li>

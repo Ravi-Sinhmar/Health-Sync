@@ -54,9 +54,6 @@ const Profile = () => {
       if (window.innerWidth >= 1024) {
         setExpandedProfile(true)
         setExpandedHealth(true)
-      } else {
-        setExpandedProfile(false)
-        setExpandedHealth(false)
       }
     }
 
@@ -268,9 +265,7 @@ const Profile = () => {
               </div>
 
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  expandedProfile ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-                }`}
+                className={`${expandedProfile || !isMobile ? "block" : "hidden"}`}
               >
                 {/* Personal Information */}
                 <div className="p-4 border-b">
@@ -429,9 +424,7 @@ const Profile = () => {
               </div>
 
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  expandedHealth ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-                }`}
+                className={`${expandedHealth || !isMobile ? "block" : "hidden"}`}
               >
                 {!hasHealthData ? (
                   <div className="p-8 text-center">
@@ -518,4 +511,3 @@ const Profile = () => {
 }
 
 export default Profile
-

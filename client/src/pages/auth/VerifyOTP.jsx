@@ -57,7 +57,6 @@ const VerifyOTP = () => {
 
   const handleVerifyOTP = async (e) => {
     e.preventDefault();
-
     if (!otp) {
       setError('Please enter the OTP');
       return;
