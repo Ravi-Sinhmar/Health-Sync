@@ -492,7 +492,7 @@ const Profile = () => {
                         ))}
                       </div>
                       <div className="mt-4 flex justify-end">
-                        <Link to={`/profile/health`}>
+                        <Link to={`/dashboard`}>
                           <Button variant="outline" size="sm">
                             View Full Report
                           </Button>

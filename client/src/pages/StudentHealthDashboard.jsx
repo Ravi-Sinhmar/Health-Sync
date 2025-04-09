@@ -14,7 +14,7 @@ export default function StudentHealthDashboard() {
     <div className="container mx-auto px-4 py-6 max-w-7xl">
       <div className="mb-6">
         <button
-          onClick={() => navigate('/profile/health')} // Redirect to /profile/health
+          onClick={() => navigate('/profile')} // Redirect to /profile/health
           className="inline-flex items-center text-lg font-medium text-gray-800"
         >
           <ArrowLeft className="mr-2 h-5 w-5" />
