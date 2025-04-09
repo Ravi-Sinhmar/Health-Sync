@@ -145,6 +145,16 @@ const Header = () => {
                             </li>
                             <li>
                                 <Link
+                                    to="/dashboard"
+                                    className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
+                                    onClick={closeNav}
+                                >
+                                    <Users className="h-5 w-5 mr-3" />
+                                    <span>Health Dashboard</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     to="/help"
                                     className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
                                     onClick={closeNav}
