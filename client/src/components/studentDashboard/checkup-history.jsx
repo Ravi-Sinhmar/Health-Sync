@@ -10,8 +10,8 @@ const checkupDates = [
 export default function CheckupHistory() {
   const [hoveredId, setHoveredId] = useState(null);
 
-  const handleCheckupClick = (id) => {
-    window.location.href = `/checkup/${id}`;
+  const handleCheckupClick = () => {
+    window.location.href = `/profile/health`; // Redirect to /profile/health
   };
 
   return (
@@ -25,7 +25,7 @@ export default function CheckupHistory() {
               className="w-24 h-24 p-0 mb-2 rounded-full overflow-hidden border border-purple-200 hover:border-purple-500 transition-all duration-300 focus:outline-none"
               onMouseEnter={() => setHoveredId(checkup.id)}
               onMouseLeave={() => setHoveredId(null)}
-              onClick={() => handleCheckupClick(checkup.id)}
+              onClick={handleCheckupClick} // Use updated function
             >
               <div
                 className={`flex items-center justify-center w-full h-full bg-purple-100 transition-all duration-300 ${
