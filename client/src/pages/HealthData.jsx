@@ -167,8 +167,11 @@ const HealthForm = () => {
   };
 
   const handleArrayFieldChange = (fieldName, value) => {
-    const values = value.split(',').map(item => item.trim()).filter(item => item);
-    setFormData({ ...formData, [fieldName]: values });
+    const values = value
+      .split(',')
+      .map(item => item.trim())
+      .filter(item => item !== ''); // Ensure no empty strings are added
+    setFormData(prev => ({ ...prev, [fieldName]: values }));
   };
 
   const handleSubmit = async (e) => {
