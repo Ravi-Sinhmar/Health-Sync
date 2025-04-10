@@ -211,11 +211,16 @@ exports.getAllStudents = async (req, res) => {
       }
     }
 
-    // Get total count for pagination
-    const total = await Student.countDocuments(query)
+    const finalQuery = {
+      ...query,
+      isVerified: true
+    };
+    
+    // Get total count for pagination (using the same finalQuery)
+    const total = await Student.countDocuments(finalQuery);
 
     // Get paginated students with basic info
-    const students = await Student.find({query,isVerified: true}, {
+    const students = await Student.find(finalQuery, {
       name: 1,
       email: 1,
       phone: 1,
