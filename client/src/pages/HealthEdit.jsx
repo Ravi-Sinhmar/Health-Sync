@@ -80,12 +80,19 @@ const HealthEdit = () => {
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
+    const { name, value } = e.target;
+
+    // Handle comma-separated fields
+    const commaSeparatedFields = ['allergies', 'medications', 'chronicConditions', 'immunizations'];
+    if (commaSeparatedFields.includes(name)) {
+      setFormData({ ...formData, [name]: value.split(',').map(item => item.trim()) });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
 
     // Auto-calculate BMI when height or weight changes
     if (name === "height" || name === "weight") {
-      setTimeout(calculateBMI, 500)
+      setTimeout(calculateBMI, 500);
     }
   }
 

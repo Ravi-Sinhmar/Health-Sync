@@ -166,7 +166,17 @@ const HealthForm = () => {
     }
   };
 
+  // const handleArrayFieldChange = (fieldName, value) => {
+  //   setFormData({ ...formData, [fieldName]: value });
+  //   const values = value
+  //     .split(',')
+  //     .map(item => item.trim())
+  //     .filter(item => item !== ''); // Ensure no empty strings are added
+  //   setFormData(prev => ({ ...prev, [fieldName]: values }));
+  // };.
+
   const handleArrayFieldChange = (fieldName, value) => {
+    // Store the raw string (don't split into array yet)
     setFormData({ ...formData, [fieldName]: value });
   };
 
@@ -215,40 +225,24 @@ const HealthForm = () => {
     setError(null);
     
     try {
-      // Prepare the data to match your schema
+      // Convert comma-separated strings to arrays before submitting
       const submissionData = {
         ...formData,
-        // Convert string values to arrays
-        allergies: typeof formData.allergies === 'string' ? 
-          formData.allergies.split(',').map(item => item.trim()).filter(item => item) : 
-          formData.allergies,
-        medications: typeof formData.medications === 'string' ? 
-          formData.medications.split(',').map(item => item.trim()).filter(item => item) : 
-          formData.medications,
-        chronicConditions: typeof formData.chronicConditions === 'string' ? 
-          formData.chronicConditions.split(',').map(item => item.trim()).filter(item => item) : 
-          formData.chronicConditions,
-        immunizations: typeof formData.immunizations === 'string' ? 
-          formData.immunizations.split(',').map(item => item.trim()).filter(item => item) : 
-          formData.immunizations,
-        dietaryRestrictions: typeof formData.dietaryRestrictions === 'string' ? 
-          formData.dietaryRestrictions.split(',').map(item => item.trim()).filter(item => item) : 
-          formData.dietaryRestrictions
+        allergies: convertToArray(formData.allergies),
+        medications: convertToArray(formData.medications),
+        chronicConditions: convertToArray(formData.chronicConditions),
+        immunizations: convertToArray(formData.immunizations),
+        dietaryRestrictions: convertToArray(formData.dietaryRestrictions),
       };
-      
+  
       const response = await fetch(`${apiConfig.baseURL}/students/healthdata/save`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(submissionData),
       });
-      
-      if (!response.ok) {
-        throw new Error('Failed to save health information');
-      }
-      
+  
+      if (!response.ok) throw new Error("Failed to save health information");
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } catch (err) {
@@ -256,6 +250,15 @@ const HealthForm = () => {
     } finally {
       setLoading(false);
     }
+  };
+  
+  // Helper function to safely convert strings to arrays
+  const convertToArray = (value) => {
+    if (Array.isArray(value)) return value; // Already an array (from initial fetch)
+    if (typeof value === "string") {
+      return value.split(",").map(item => item.trim()).filter(item => item);
+    }
+    return []; // Fallback for unexpected types
   };
 
   if (fetching) {

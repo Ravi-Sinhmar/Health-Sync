@@ -12,6 +12,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword"
 import VerifyOTP from "./pages/auth/VerifyOTP"
 import SetPassword from "./pages/auth/SetPassword"
 import CompleteProfile from "./pages/auth/CompleteProfile"
+import StudentHealthDashboard from "./pages/StudentHealthDashboard"
 
 
 // Main de
@@ -95,6 +96,16 @@ function App() {
           <Toaster position="top-right" />
           <Routes>
             {/* Public Routes */}
+
+            <Route
+              path="/dashboard"
+              element={
+                <AppLayout>
+                  <StudentHealthDashboard />
+                </AppLayout>
+              }
+            />
+
             <Route
               path="/"
               element={
