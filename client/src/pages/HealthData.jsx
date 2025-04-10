@@ -167,9 +167,47 @@ const HealthForm = () => {
   };
 
   const handleArrayFieldChange = (fieldName, value) => {
-    const values = value.split(',').map(item => item.trim()).filter(item => item);
-    setFormData({ ...formData, [fieldName]: values });
+    setFormData({ ...formData, [fieldName]: value });
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setError(null);
+    
+  //   try {
+  //     // Prepare the data to match your schema
+  //     const submissionData = {
+  //       ...formData,
+  //       // Convert string arrays to arrays if needed
+  //       allergies: Array.isArray(formData.allergies) ? formData.allergies : formData.allergies.split(',').map(item => item.trim()),
+  //       medications: Array.isArray(formData.medications) ? formData.medications : formData.medications.split(',').map(item => item.trim()),
+  //       chronicConditions: Array.isArray(formData.chronicConditions) ? formData.chronicConditions : formData.chronicConditions.split(',').map(item => item.trim()),
+  //       immunizations: Array.isArray(formData.immunizations) ? formData.immunizations : formData.immunizations.split(',').map(item => item.trim()),
+  //       dietaryRestrictions: Array.isArray(formData.dietaryRestrictions) ? formData.dietaryRestrictions : formData.dietaryRestrictions.split(',').map(item => item.trim())
+  //     };
+      
+  //     const response = await fetch(`${apiConfig.baseURL}/students/healthdata/save`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       credentials: 'include',
+  //       body: JSON.stringify(submissionData),
+  //     });
+      
+  //     if (!response.ok) {
+  //       throw new Error('Failed to save health information');
+  //     }
+      
+  //     setSuccess(true);
+  //     setTimeout(() => setSuccess(false), 3000);
+  //   } catch (err) {
+  //     setError(err.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -180,12 +218,22 @@ const HealthForm = () => {
       // Prepare the data to match your schema
       const submissionData = {
         ...formData,
-        // Convert string arrays to arrays if needed
-        allergies: Array.isArray(formData.allergies) ? formData.allergies : formData.allergies.split(',').map(item => item.trim()),
-        medications: Array.isArray(formData.medications) ? formData.medications : formData.medications.split(',').map(item => item.trim()),
-        chronicConditions: Array.isArray(formData.chronicConditions) ? formData.chronicConditions : formData.chronicConditions.split(',').map(item => item.trim()),
-        immunizations: Array.isArray(formData.immunizations) ? formData.immunizations : formData.immunizations.split(',').map(item => item.trim()),
-        dietaryRestrictions: Array.isArray(formData.dietaryRestrictions) ? formData.dietaryRestrictions : formData.dietaryRestrictions.split(',').map(item => item.trim())
+        // Convert string values to arrays
+        allergies: typeof formData.allergies === 'string' ? 
+          formData.allergies.split(',').map(item => item.trim()).filter(item => item) : 
+          formData.allergies,
+        medications: typeof formData.medications === 'string' ? 
+          formData.medications.split(',').map(item => item.trim()).filter(item => item) : 
+          formData.medications,
+        chronicConditions: typeof formData.chronicConditions === 'string' ? 
+          formData.chronicConditions.split(',').map(item => item.trim()).filter(item => item) : 
+          formData.chronicConditions,
+        immunizations: typeof formData.immunizations === 'string' ? 
+          formData.immunizations.split(',').map(item => item.trim()).filter(item => item) : 
+          formData.immunizations,
+        dietaryRestrictions: typeof formData.dietaryRestrictions === 'string' ? 
+          formData.dietaryRestrictions.split(',').map(item => item.trim()).filter(item => item) : 
+          formData.dietaryRestrictions
       };
       
       const response = await fetch(`${apiConfig.baseURL}/students/healthdata/save`, {
