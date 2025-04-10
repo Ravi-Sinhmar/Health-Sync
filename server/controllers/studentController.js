@@ -215,7 +215,7 @@ exports.getAllStudents = async (req, res) => {
     const total = await Student.countDocuments(query)
 
     // Get paginated students with basic info
-    const students = await Student.find(query, {
+    const students = await Student.find({query,isVerified: true}, {
       name: 1,
       email: 1,
       phone: 1,
