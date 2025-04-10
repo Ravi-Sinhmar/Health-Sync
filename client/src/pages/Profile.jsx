@@ -234,7 +234,7 @@ const Profile = () => {
                   className="group flex items-center gap-1.5 text-violet-600 hover:text-violet-800 transition-colors"
                 >
                   <FileEdit className="size-4" />
-                  <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-xs font-medium  transition-opacity">
                     Edit Profile
                   </span>
                 </Link>
@@ -371,7 +371,7 @@ const Profile = () => {
                     className="group flex items-center gap-1.5 text-emerald-600 hover:text-emerald-800 transition-colors"
                   >
                     <ClipboardEdit className="size-4" />
-                    <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-xs font-medium transition-opacity">
                       Edit Health Data
                     </span>
                   </Link>
