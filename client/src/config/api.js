@@ -1,7 +1,10 @@
 // src/config/api.js
+const url =
+  import.meta.env.VITE_ENV == "production"
+    ? import.meta.env.VITE_API_BASE_URL
+    : "http:/localhost:5000";
 const apiConfig = {
-    baseURL: import.meta.env.VITE_API_BASE_URL,
-    env: import.meta.env.VITE_ENV || 'production'
-  };
-  
-  export default apiConfig;
+  baseURL: url,
+};
+
+export default apiConfig;
