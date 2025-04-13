@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const test = require('./models/test');
 
 
-const URL = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
+const Remote_url = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
 
 
 // Load environment variables
@@ -22,14 +22,14 @@ const PORT = process.env.PORT || 5000
 
 // CORS configuration
 app.use(cors({
-  origin: 'https://health-sync-pro.vercel.app', // Frontend domain
+  origin: Remote_url, // Frontend domain
   credentials: true, // Allow cookies
 }));
 
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Origin", "https://health-sync-pro.vercel.app"); // Frontend URL
+  res.header("Access-Control-Allow-Origin", Remote_url); // Frontend URL
   next();
 });
 // Add this after your CORS middleware
