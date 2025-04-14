@@ -24,12 +24,12 @@ import Users from "./pages/Users"
 import Help from "./pages/Help"
 
 // Workout Tracking Pages
-import WorkoutApp from "./components/workoutApp"
-import WorkoutDashboard from "./components/workoutDashboard"
-import ActiveWorkout from "./components/activeWorkout"
-import ExerciseLibrary from "./components/exerciseLibrary"
-import WorkoutHistory from "./components/workoutHistory"
-import CreateWorkout from "./components/createWorkout"
+import WorkoutApp from "./pages/workoutApp"
+import WorkoutDashboard from "./pages/workoutDashboard"
+import ActiveWorkout from "./pages/activeWorkout"
+import ExerciseLibrary from "./pages/exerciseLibrary"
+import WorkoutHistory from "./pages/workoutHistory"
+import CreateWorkout from "./pages/createWorkout"
 
 import OverlayBackround from "./components/layout/OverlayBackround"
 
