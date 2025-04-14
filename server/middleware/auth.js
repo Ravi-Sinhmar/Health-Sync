@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken")
 exports.authenticate = (req, res, next) => {
   // Get token from cookies
   const token = req.cookies.token;
-  console.log(token);
   // Check if no token
   if (!token) {
     return res.status(401).json({ message: "No token, authorization denied" })
@@ -15,7 +14,7 @@ exports.authenticate = (req, res, next) => {
 
     // Add user from payload to request
     req.user = decoded
-    next()
+    next();
   } catch (error) {
     res.status(401).json({ message: "Token is not valid" })
   }

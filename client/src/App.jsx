@@ -4,7 +4,6 @@ import { RecoilRoot, useRecoilValue } from "recoil"
 import { Toaster } from "react-hot-toast"
 import { overlayState } from "./recoil/atoms"
 
-
 // Auth Pages
 import Login from "./pages/auth/Login"
 import Register from "./pages/auth/Register"
@@ -14,10 +13,8 @@ import SetPassword from "./pages/auth/SetPassword"
 import CompleteProfile from "./pages/auth/CompleteProfile"
 import StudentHealthDashboard from "./pages/StudentHealthDashboard"
 
-
-// Main de
+// Main pages
 import Home from "./pages/Home"
-
 import Profile from "./pages/Profile"
 import EditProfile from './pages/EditProfile';
 import DetailedHealthMetrics from "./pages/DetailedHealthMetircs"
@@ -25,6 +22,14 @@ import HealthData from "./pages/HealthData"
 import NotFound from "./pages/NotFound"
 import Users from "./pages/Users"
 import Help from "./pages/Help"
+
+// Workout Tracking Pages
+import WorkoutApp from "./components/workoutApp"
+import WorkoutDashboard from "./components/workoutDashboard"
+import ActiveWorkout from "./components/activeWorkout"
+import ExerciseLibrary from "./components/exerciseLibrary"
+import WorkoutHistory from "./components/workoutHistory"
+import CreateWorkout from "./components/createWorkout"
 
 import OverlayBackround from "./components/layout/OverlayBackround"
 
@@ -90,7 +95,7 @@ function AppLayout({ children }) {
 
 function App() {
   return (
-
+    <RecoilRoot>
       <AuthProvider>
         <Router>
           <Toaster position="top-right" />
@@ -157,9 +162,7 @@ function App() {
             <Route
               path="/complete-profile"
               element={
-              
                   <CompleteProfile />
-               
               }
             />
 
@@ -174,7 +177,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-              <Route
+            <Route
               path="/profile/edit"
               element={
                 <ProtectedRoute>
@@ -184,7 +187,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
 
             <Route
               path="/profile/health"
@@ -208,7 +210,7 @@ function App() {
               }
             />
 
-<Route
+            <Route
               path="/health/edit"
               element={
                 <ProtectedRoute>
@@ -218,6 +220,69 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Workout Tracking Routes */}
+            <Route
+              path="/workouts"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <WorkoutApp />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/workouts/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <WorkoutDashboard />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/workouts/active"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <ActiveWorkout />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/workouts/exercises"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <ExerciseLibrary />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/workouts/history"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <WorkoutHistory />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/workouts/create"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <CreateWorkout />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+
             <Route
               path="/users"
               element={
@@ -251,9 +316,8 @@ function App() {
           </Routes>
         </Router>
       </AuthProvider>
-   
+    </RecoilRoot>
   )
 }
 
 export default App
-

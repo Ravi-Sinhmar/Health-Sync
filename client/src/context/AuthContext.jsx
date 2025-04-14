@@ -3,11 +3,13 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import apiConfig from '../config/api';
 
-const AuthContext = createContext()
+export const AuthContext = createContext()
 
-export const useAuth = () => useContext(AuthContext)
+export function useAuth() {
+  return useContext(AuthContext)
+}
 
-export const AuthProvider = ({ children }) => {
+export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -42,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch(`https://health-sync-backend-1r73.onrender.com/auth/login`, {
+      const response = await fetch(`${apiConfig.baseURL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
