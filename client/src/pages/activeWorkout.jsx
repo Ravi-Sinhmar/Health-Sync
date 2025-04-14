@@ -492,13 +492,13 @@ export default function ActiveWorkout() {
               <p className="mt-2 text-gray-600">Great job! You've completed all exercises in this workout.</p>
               <div className="mt-4 flex justify-center space-x-4">
                 <button
-                  onClick={() => (window.location.href = "/history")}
+                  onClick={() => (window.location.href = "workouts/history")}
                   className="rounded-md bg-violet-600 px-4 py-2 text-white hover:bg-violet-600/90"
                 >
                   View History
                 </button>
                 <button
-                  onClick={() => (window.location.href = "/create")}
+                  onClick={() => (window.location.href = "workouts/create")}
                   className="rounded-md border px-4 py-2 hover:bg-gray-50"
                 >
                   New Workout
