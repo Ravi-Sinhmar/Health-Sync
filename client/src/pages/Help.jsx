@@ -70,7 +70,7 @@ const Help = () => {
                 <Phone className="h-6 w-6 text-violet-600 mt-1 mr-3" />
                 <div>
                   <h3 className="font-medium text-gray-900">Contact Us</h3>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-[13px] text-gray-600">
                     Call us at +1 (123) 456-7890 for immediate assistance.
                     <br />
                     Available Monday-Friday, 9am-5pm.
@@ -84,7 +84,7 @@ const Help = () => {
                 <Mail className="h-6 w-6 text-violet-600 mt-1 mr-3" />
                 <div>
                   <h3 className="font-medium text-gray-900">Email Support</h3>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-[13px] text-gray-600">
                     Send an email to support@healthtrack.com
                     <br />
                     We'll respond within 24 hours.
@@ -98,7 +98,7 @@ const Help = () => {
                 <FileText className="h-6 w-6 text-violet-600 mt-1 mr-3" />
                 <div>
                   <h3 className="font-medium text-gray-900">Documentation</h3>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-[13px] text-gray-600">
                     Browse our documentation for detailed guides and tutorials.
                   </p>
                 </div>
@@ -110,7 +110,7 @@ const Help = () => {
                 <MessageCircle className="h-6 w-6 text-violet-600 mt-1 mr-3" />
                 <div>
                   <h3 className="font-medium text-gray-900">Live Chat</h3>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-[13px] text-gray-600">
                     Chat with our support team for real-time assistance.
                     <br />
                     Available during business hours.
@@ -126,7 +126,7 @@ const Help = () => {
 
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="subject" className="block text-[13px] font-medium text-gray-700 mb-1">
                   Subject
                 </label>
                 <input
@@ -134,14 +134,14 @@ const Help = () => {
                   id="subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-violet-600"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-[13px] focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-violet-600"
                   placeholder="What is your inquiry about?"
                   required
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="block text-[13px] font-medium text-gray-700 mb-1">
                   Message
                 </label>
                 <textarea
@@ -149,7 +149,7 @@ const Help = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={6}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-violet-600"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-[13px] focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-violet-600"
                   placeholder="Please describe your issue or question in detail..."
                   required
                 ></textarea>

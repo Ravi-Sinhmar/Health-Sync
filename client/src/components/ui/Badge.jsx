@@ -11,8 +11,8 @@ const Badge = ({ children, variant = "default", size = "md", className = "", ...
   }
 
   const sizes = {
-    sm: "px-2 py-0.5 text-xs",
-    md: "px-2.5 py-0.5 text-sm",
+    sm: "px-2 py-0.5 text-[13px]",
+    md: "px-2.5 py-0.5 text-[13px]",
     lg: "px-3 py-1 text-base",
   }
 

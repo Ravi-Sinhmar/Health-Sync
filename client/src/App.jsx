@@ -25,11 +25,18 @@ import Help from "./pages/Help"
 
 // Workout Tracking Pages
 import WorkoutApp from "./pages/workoutApp"
-import WorkoutDashboard from "./pages/workoutDashboard"
-import ActiveWorkout from "./pages/activeWorkout"
-import ExerciseLibrary from "./pages/exerciseLibrary"
-import WorkoutHistory from "./pages/workoutHistory"
-import CreateWorkout from "./pages/createWorkout"
+import WorkoutDashboard from "./pages/WorkoutDashboard"
+import ActiveWorkout from "./pages/ActiveWorkout"
+import ExerciseLibrary from "./pages/ExerciseLibrary"
+import WorkoutHistory from "./pages/WorkoutHistory"
+import CreateWorkout from "./pages/CreateWorkout"
+
+
+// Meal planner/tracker , protein calculator
+import ProteinCalculator from "./pages/ProteinCalculator"
+import BasicDetails from "./pages/BasicDetails"
+import MealType from "./pages/MealType"
+
 
 import OverlayBackround from "./components/layout/OverlayBackround"
 
@@ -40,6 +47,8 @@ import Footer from "./components/layout/Footer"
 // Auth Provider
 import { AuthProvider, useAuth } from "./context/AuthContext"
 import HealthEdit from "./pages/HealthEdit"
+import MealPlanner from "./pages/MealPlanner"
+import MealTracker from "./pages/MealTracker"
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -282,6 +291,62 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            {/* Protein Calculator */}
+            <Route
+              path="/meal/protein/calculator"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <ProteinCalculator />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/meal/details"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <BasicDetails />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/meal/type"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <MealType />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+
+
+{/* Meal Planner and Meal tracker */}
+<Route
+              path="/meal/planner"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <MealPlanner />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+
+<Route
+              path="/meal/tracker"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <MealTracker />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+
 
             <Route
               path="/users"

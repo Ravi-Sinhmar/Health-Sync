@@ -272,11 +272,11 @@ const HealthForm = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white shadow-sm rounded-lg overflow-hidden">
+        <div className="bg-white shadow-[13px] rounded-lg overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-violet-500 to-purple-600 px-6 py-4">
             <h1 className="text-xl font-medium text-white">Student Health Information</h1>
-            <p className="text-violet-100 text-sm mt-1">
+            <p className="text-violet-100 text-[13px] mt-1">
               {formData.admissionNumber ? `Admission #: ${formData.admissionNumber}` : 'Please fill in the health details'}
             </p>
           </div>
@@ -285,13 +285,13 @@ const HealthForm = () => {
           <form onSubmit={handleSubmit} className="px-6 py-4 space-y-6">
             {/* Status messages */}
             {success && (
-              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm">
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-[13px]">
                 Health information saved successfully!
               </div>
             )}
             
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm flex items-center">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-[13px] flex items-center">
                 <AlertCircle size={16} className="mr-2" />
                 {error}
               </div>
@@ -299,37 +299,37 @@ const HealthForm = () => {
             
             {/* Student Information (Non-editable) */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Student Information</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Student Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">
+                  <label className="block text-[13px] font-medium text-gray-700 mb-1">
                     Admission Number
                   </label>
-                  <div className="w-full text-sm rounded-md bg-gray-100 py-2 px-3">
+                  <div className="w-full text-[13px] rounded-md bg-gray-100 py-2 px-3">
                     {formData.admissionNumber || 'N/A'}
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">
+                  <label className="block text-[13px] font-medium text-gray-700 mb-1">
                     Full Name
                   </label>
-                  <div className="w-full text-sm rounded-md bg-gray-100 py-2 px-3">
+                  <div className="w-full text-[13px] rounded-md bg-gray-100 py-2 px-3">
                     {formData.name || 'N/A'}
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">
+                  <label className="block text-[13px] font-medium text-gray-700 mb-1">
                     Age
                   </label>
-                  <div className="w-full text-sm rounded-md bg-gray-100 py-2 px-3">
+                  <div className="w-full text-[13px] rounded-md bg-gray-100 py-2 px-3">
                     {formData.age || 'N/A'}
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">
+                  <label className="block text-[13px] font-medium text-gray-700 mb-1">
                     Gender
                   </label>
-                  <div className="w-full text-sm rounded-md bg-gray-100 py-2 px-3">
+                  <div className="w-full text-[13px] rounded-md bg-gray-100 py-2 px-3">
                     {formData.gender || 'N/A'}
                   </div>
                 </div>
@@ -338,10 +338,10 @@ const HealthForm = () => {
             
             {/* Physical Measurements */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Physical Measurements</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Physical Measurements</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="height" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="height" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Height (cm)
                   </label>
                   <input
@@ -350,11 +350,11 @@ const HealthForm = () => {
                     name="height"
                     value={formData.height}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="weight" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="weight" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Weight (kg)
                   </label>
                   <input
@@ -363,11 +363,11 @@ const HealthForm = () => {
                     name="weight"
                     value={formData.weight}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="bmi" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="bmi" className="block text-[13px] font-medium text-gray-700 mb-1">
                     BMI
                   </label>
                   <input
@@ -376,7 +376,7 @@ const HealthForm = () => {
                     name="bmi"
                     value={formData.bmi}
                     readOnly
-                    className="w-full text-sm rounded-md bg-gray-100 py-2 px-3"
+                    className="w-full text-[13px] rounded-md bg-gray-100 py-2 px-3"
                   />
                 </div>
               </div>
@@ -384,10 +384,10 @@ const HealthForm = () => {
             
             {/* Vital Signs */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Vital Signs</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Vital Signs</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="bloodPressure.systolic.value" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="bloodPressure.systolic.value" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Blood Pressure (Systolic)
                   </label>
                   <input
@@ -396,11 +396,11 @@ const HealthForm = () => {
                     name="bloodPressure.systolic.value"
                     value={formData.bloodPressure.systolic.value}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="bloodPressure.diastolic.value" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="bloodPressure.diastolic.value" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Blood Pressure (Diastolic)
                   </label>
                   <input
@@ -409,11 +409,11 @@ const HealthForm = () => {
                     name="bloodPressure.diastolic.value"
                     value={formData.bloodPressure.diastolic.value}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="heartRate.value" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="heartRate.value" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Heart Rate
                   </label>
                   <input
@@ -422,11 +422,11 @@ const HealthForm = () => {
                     name="heartRate.value"
                     value={formData.heartRate.value}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="temperature.value" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="temperature.value" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Temperature (°C)
                   </label>
                   <input
@@ -436,11 +436,11 @@ const HealthForm = () => {
                     name="temperature.value"
                     value={formData.temperature.value}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="oxygenSaturation.value" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="oxygenSaturation.value" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Oxygen Saturation (%)
                   </label>
                   <input
@@ -449,7 +449,7 @@ const HealthForm = () => {
                     name="oxygenSaturation.value"
                     value={formData.oxygenSaturation.value}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
               </div>
@@ -457,10 +457,10 @@ const HealthForm = () => {
             
             {/* Health Assessments */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Health Assessments</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Health Assessments</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="vision" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="vision" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Vision Assessment
                   </label>
                   <select
@@ -468,7 +468,7 @@ const HealthForm = () => {
                     name="vision"
                     value={formData.vision}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   >
                     <option value="">Select</option>
                     <option value="normal">Normal</option>
@@ -477,7 +477,7 @@ const HealthForm = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="hearing" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="hearing" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Hearing Assessment
                   </label>
                   <select
@@ -485,7 +485,7 @@ const HealthForm = () => {
                     name="hearing"
                     value={formData.hearing}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   >
                     <option value="">Select</option>
                     <option value="normal">Normal</option>
@@ -499,10 +499,10 @@ const HealthForm = () => {
             
             {/* Medical Information */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Medical Information</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Medical Information</h2>
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="allergies" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="allergies" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Allergies (comma separated)
                   </label>
                   <input
@@ -511,11 +511,11 @@ const HealthForm = () => {
                     name="allergies"
                     value={Array.isArray(formData.allergies) ? formData.allergies.join(', ') : formData.allergies}
                     onChange={(e) => handleArrayFieldChange('allergies', e.target.value)}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="medications" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="medications" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Current Medications (comma separated)
                   </label>
                   <input
@@ -524,11 +524,11 @@ const HealthForm = () => {
                     name="medications"
                     value={Array.isArray(formData.medications) ? formData.medications.join(', ') : formData.medications}
                     onChange={(e) => handleArrayFieldChange('medications', e.target.value)}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="chronicConditions" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="chronicConditions" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Chronic Conditions (comma separated)
                   </label>
                   <input
@@ -537,11 +537,11 @@ const HealthForm = () => {
                     name="chronicConditions"
                     value={Array.isArray(formData.chronicConditions) ? formData.chronicConditions.join(', ') : formData.chronicConditions}
                     onChange={(e) => handleArrayFieldChange('chronicConditions', e.target.value)}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="immunizations" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="immunizations" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Immunizations (comma separated)
                   </label>
                   <input
@@ -550,7 +550,7 @@ const HealthForm = () => {
                     name="immunizations"
                     value={Array.isArray(formData.immunizations) ? formData.immunizations.join(', ') : formData.immunizations}
                     onChange={(e) => handleArrayFieldChange('immunizations', e.target.value)}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
               </div>
@@ -558,10 +558,10 @@ const HealthForm = () => {
             
             {/* Lifestyle Information */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Lifestyle Information</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Lifestyle Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="dietaryRestrictions" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="dietaryRestrictions" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Dietary Restrictions (comma separated)
                   </label>
                   <input
@@ -570,11 +570,11 @@ const HealthForm = () => {
                     name="dietaryRestrictions"
                     value={Array.isArray(formData.dietaryRestrictions) ? formData.dietaryRestrictions.join(', ') : formData.dietaryRestrictions}
                     onChange={(e) => handleArrayFieldChange('dietaryRestrictions', e.target.value)}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="physicalActivity" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="physicalActivity" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Physical Activity (hours/week)
                   </label>
                   <input
@@ -583,11 +583,11 @@ const HealthForm = () => {
                     name="physicalActivity"
                     value={formData.physicalActivity}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="sleepHours" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="sleepHours" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Sleep (hours/day)
                   </label>
                   <input
@@ -596,11 +596,11 @@ const HealthForm = () => {
                     name="sleepHours"
                     value={formData.sleepHours}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="mentalHealthNotes" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="mentalHealthNotes" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Mental Health Notes
                   </label>
                   <input
@@ -609,7 +609,7 @@ const HealthForm = () => {
                     name="mentalHealthNotes"
                     value={formData.mentalHealthNotes}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
               </div>
@@ -617,10 +617,10 @@ const HealthForm = () => {
             
             {/* Emergency Contact */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Emergency Contact</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Emergency Contact</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="emergencyContact.name" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="emergencyContact.name" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Name
                   </label>
                   <input
@@ -629,11 +629,11 @@ const HealthForm = () => {
                     name="emergencyContact.name"
                     value={formData.emergencyContact.name}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="emergencyContact.relationship" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="emergencyContact.relationship" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Relationship
                   </label>
                   <input
@@ -642,11 +642,11 @@ const HealthForm = () => {
                     name="emergencyContact.relationship"
                     value={formData.emergencyContact.relationship}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
                 <div>
-                  <label htmlFor="emergencyContact.phone" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="emergencyContact.phone" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Phone Number
                   </label>
                   <input
@@ -655,7 +655,7 @@ const HealthForm = () => {
                     name="emergencyContact.phone"
                     value={formData.emergencyContact.phone}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                    className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
                   />
                 </div>
               </div>
@@ -663,7 +663,7 @@ const HealthForm = () => {
             
             {/* Last Checkup Date */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <label htmlFor="lastCheckupDate" className="block text-xs font-medium text-gray-700 mb-1">
+              <label htmlFor="lastCheckupDate" className="block text-[13px] font-medium text-gray-700 mb-1">
                 Last Checkup Date
               </label>
               <input
@@ -672,7 +672,7 @@ const HealthForm = () => {
                 name="lastCheckupDate"
                 value={formData.lastCheckupDate}
                 onChange={handleChange}
-                className="w-full text-sm rounded-md shadow-sm focus:border-violet-500 border border-gray-300 py-2 px-3"
+                className="w-full text-[13px] rounded-md shadow-[13px] focus:border-violet-500 border border-gray-300 py-2 px-3"
               />
             </div>
             
@@ -681,7 +681,7 @@ const HealthForm = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 disabled:opacity-50"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-[13px] font-medium rounded-md shadow-[13px] text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 disabled:opacity-50"
               >
                 {loading ? (
                   <span className="flex items-center">

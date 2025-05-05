@@ -47,10 +47,10 @@ const HealthMetricCard = ({
             {unit && <span className="ml-1 text-gray-500">{unit}</span>}
           </div>
           {normalRange && (
-            <p className="mt-1 text-sm text-gray-500">Normal range: {normalRange}</p>
+            <p className="mt-1 text-[13px] text-gray-500">Normal range: {normalRange}</p>
           )}
           {description && (
-            <p className="mt-2 text-sm text-gray-600">{description}</p>
+            <p className="mt-2 text-[13px] text-gray-600">{description}</p>
           )}
         </div>
         <StatusBadge 

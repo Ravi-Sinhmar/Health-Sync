@@ -13,7 +13,7 @@ const StatusBadge = ({ status, label }) => {
   }
 
   return (
-    <span className={`px-3 py-1 inline-flex text-sm font-medium rounded-full border ${getStatusStyles()}`}>
+    <span className={`px-3 py-1 inline-flex text-[13px] font-medium rounded-full border ${getStatusStyles()}`}>
       {label}
     </span>
   )

@@ -97,7 +97,7 @@ setIsHealthy(!hasAbnormalMetrics)
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-semibold text-gray-800">{profile.name || 'Unknown'}</h2>
-              <p className="text-sm text-gray-500 mb-2">{profile.email}</p>
+              <p className="text-[13px] text-gray-500 mb-2">{profile.email}</p>
               <HealthStatusBox isHealthy={isHealthy} />
             </div>
           </div>
@@ -105,7 +105,7 @@ setIsHealthy(!hasAbnormalMetrics)
 
         {/* Compact Personal Details */}
         <Card title="Personal Details" className="mb-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-sm">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-[13px]">
             <div className="flex items-center space-x-2">
               <FaIdCard className="text-gray-400" />
               <span className="text-gray-600">Admission:</span>

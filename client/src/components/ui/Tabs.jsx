@@ -34,8 +34,8 @@ export const TabsTrigger = ({ value, children, className = "", ...props }) => {
       data-state={activeTab === value ? "active" : "inactive"}
       onClick={() => setActiveTab(value)}
       className={`
-        px-3 py-1.5 text-sm font-medium rounded-md transition-all
-        ${activeTab === value ? "bg-white text-violet-700 shadow-sm" : "text-gray-600 hover:text-gray-900"}
+        px-3 py-1.5 text-[13px] font-medium rounded-md transition-all
+        ${activeTab === value ? "bg-white text-violet-700 shadow-[13px]" : "text-gray-600 hover:text-gray-900"}
         ${className}
       `}
       {...props}

@@ -2,12 +2,11 @@
 
 import { useState } from "react"
 import { RecoilRoot } from "recoil"
-import WorkoutDashboard from "./workoutDashboard"
-import ActiveWorkout from "./activeWorkout"
-import ExerciseLibrary from "./exerciseLibrary"
-import WorkoutHistory from "./workoutHistory"
-import CreateWorkout from "./createWorkout"
-
+import WorkoutDashboard from "./WorkoutDashboard"
+import ActiveWorkout from "./ActiveWorkout"
+import ExerciseLibrary from "./ExerciseLibrary"
+import WorkoutHistory from "./WorkoutHistory"
+import CreateWorkout from "./CreateWorkout"
 
 export default function WorkoutApp() {
   const [activeTab, setActiveTab] = useState("dashboard")
@@ -19,38 +18,54 @@ export default function WorkoutApp() {
   return (
     <RecoilRoot>
       <div className="container mx-auto px-4 py-6">
-        <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Workout Tracker</h1>
-        </div>
-
         <div className="mb-6">
-          <div className="flex border-b">
+          <div className="flex space-x-1">
             <button
-              className={`px-4 py-2 ${activeTab === "dashboard" ? "border-b-2 border-violet-600 font-medium" : ""}`}
+              className={`flex items-center px-3 py-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${
+                activeTab === "dashboard" 
+                  ? "bg-violet-600 text-white shadow-[13px]" 
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
               onClick={() => setActiveTab("dashboard")}
             >
               Dashboard
             </button>
             <button
-              className={`px-4 py-2 ${activeTab === "active" ? "border-b-2 border-violet-600 font-medium" : ""}`}
+              className={`flex items-center px-3 py-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${
+                activeTab === "active" 
+                  ? "bg-violet-600 text-white shadow-[13px]" 
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
               onClick={() => setActiveTab("active")}
             >
               Active Workout
             </button>
             <button
-              className={`px-4 py-2 ${activeTab === "exercises" ? "border-b-2 border-violet-600 font-medium" : ""}`}
+              className={`flex items-center px-3 py-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${
+                activeTab === "exercises" 
+                  ? "bg-violet-600 text-white shadow-[13px]" 
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
               onClick={() => setActiveTab("exercises")}
             >
               Exercises
             </button>
             <button
-              className={`px-4 py-2 ${activeTab === "history" ? "border-b-2 border-violet-600 font-medium" : ""}`}
+              className={`flex items-center px-3 py-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${
+                activeTab === "history" 
+                  ? "bg-violet-600 text-white shadow-[13px]" 
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
               onClick={() => setActiveTab("history")}
             >
               History
             </button>
             <button
-              className={`px-4 py-2 ${activeTab === "create" ? "border-b-2 border-violet-600 font-medium" : ""}`}
+              className={`flex items-center px-3 py-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${
+                activeTab === "create" 
+                  ? "bg-violet-600 text-white shadow-[13px]" 
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
               onClick={() => setActiveTab("create")}
             >
               Create

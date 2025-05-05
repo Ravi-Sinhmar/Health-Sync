@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { useRecoilState } from "recoil"
 import { activeWorkoutState } from "../state/workoutState"
-import RestTimer from "./restTimer"
-import { Clock, CheckCircle, Check, SkipForward } from "lucide-react"
+import RestTimer from "./RestTimer"
+import { Clock, CheckCircle, Check, SkipForward, ClipboardList, Timer, Settings } from 'lucide-react'
 import apiConfig from "../config/api"
 
 export default function ActiveWorkout() {
@@ -388,7 +388,8 @@ export default function ActiveWorkout() {
   if (loading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <p>Loading workout...</p>
+        <div className="h-6 w-6 animate-spin rounded-full border-2 border-violet-600 border-t-transparent"></div>
+        <p className="ml-2 text-[13px] text-gray-500">Loading workout...</p>
       </div>
     )
   }
@@ -396,18 +397,18 @@ export default function ActiveWorkout() {
   if (error) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <p className="text-red-500">Error: {error}</p>
+        <p className="text-[13px] text-red-500">Error: {error}</p>
       </div>
     )
   }
 
   if (!activeWorkout) {
     return (
-      <div className="flex h-64 flex-col items-center justify-center space-y-4">
-        <p className="text-center text-gray-500">No active workout</p>
+      <div className="flex h-64 flex-col items-center justify-center space-y-3">
+        <p className="text-center text-[13px] text-gray-500">No active workout</p>
         <button
           onClick={() => (window.location.href = "/create")}
-          className="rounded-md bg-violet-600 px-4 py-2 text-white hover:bg-violet-600/90"
+          className="rounded-md bg-violet-600 px-3 py-1.5 text-[13px] text-white hover:bg-violet-600/90"
         >
           Create Workout
         </button>
@@ -418,14 +419,14 @@ export default function ActiveWorkout() {
   const isWorkoutComplete = activeWorkout.exercises.every((ex) => ex.sets.every((set) => set.completed))
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {toast.show && (
         <div
-          className={`fixed top-4 right-4 z-50 rounded-md p-4 shadow-md ${
+          className={`fixed top-4 right-4 z-50 rounded-md p-3 shadow-md text-[13px] ${
             toast.type === "error"
               ? "bg-red-500 text-white"
               : toast.type === "info"
-                ? "bg-blue-500 text-white"
+                ? "bg-violet-500 text-white"
                 : "bg-violet-500 text-white"
           }`}
         >
@@ -445,20 +446,20 @@ export default function ActiveWorkout() {
       ) : (
         <>
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold">{activeWorkout.name}</h2>
-            <div className="flex items-center space-x-2">
-              <Clock className="h-5 w-5 text-gray-500" />
-              <span className="font-medium">{formatTime(workoutTimer)}</span>
+            <h2 className="text-[13px] font-bold text-gray-900">{activeWorkout.name}</h2>
+            <div className="flex items-center space-x-1.5">
+              <Clock className="h-3.5 w-3.5 text-gray-500" />
+              <span className="text-[13px] font-medium text-gray-900">{formatTime(workoutTimer)}</span>
             </div>
           </div>
 
           {/* Progress bar */}
-          <div className="space-y-2">
-            <div className="flex justify-between text-sm">
-              <span>{completionPercentage}% Complete</span>
-              <span>Est. remaining: {formatTime(estimatedTime)}</span>
+          <div className="space-y-1.5">
+            <div className="flex justify-between text-[13px]">
+              <span className="text-gray-500">{completionPercentage}% Complete</span>
+              <span className="text-gray-500">Est. remaining: {formatTime(estimatedTime)}</span>
             </div>
-            <div className="h-2 w-full rounded-full bg-gray-200">
+            <div className="h-1.5 w-full rounded-full bg-gray-200">
               <div
                 className="h-full rounded-full bg-violet-600 transition-all"
                 style={{ width: `${completionPercentage}%` }}
@@ -467,39 +468,48 @@ export default function ActiveWorkout() {
           </div>
 
           {/* Rest timer buttons */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => startRestTimer(shortRestTime)}
-              className="flex-1 rounded-md bg-blue-100 px-4 py-2 text-blue-700 hover:bg-blue-200"
-            >
-              Short Rest ({Math.floor(shortRestTime / 60)}:{(shortRestTime % 60).toString().padStart(2, "0")})
-            </button>
-            <button
-              onClick={() => startRestTimer(longRestTime)}
-              className="flex-1 rounded-md bg-purple-100 px-4 py-2 text-purple-700 hover:bg-purple-200"
-            >
-              Long Rest ({Math.floor(longRestTime / 60)}:{(longRestTime % 60).toString().padStart(2, "0")})
-            </button>
-            <button onClick={() => setShowRestSettings(true)} className="rounded-md border px-3 py-2 hover:bg-gray-50">
-              ⚙️
-            </button>
+          <div className="bg-white shadow-[13px] rounded-md p-3 border border-gray-200">
+            <div className="flex items-center mb-2">
+              <Timer className="h-3.5 w-3.5 text-violet-600 mr-1.5" />
+              <h2 className="text-[13px] font-medium text-gray-900">Rest Timer</h2>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => startRestTimer(shortRestTime)}
+                className="flex-1 rounded-md bg-violet-50 px-3 py-1.5 text-[13px] text-violet-700 hover:bg-violet-100"
+              >
+                Short Rest ({Math.floor(shortRestTime / 60)}:{(shortRestTime % 60).toString().padStart(2, "0")})
+              </button>
+              <button
+                onClick={() => startRestTimer(longRestTime)}
+                className="flex-1 rounded-md bg-violet-100 px-3 py-1.5 text-[13px] text-violet-700 hover:bg-violet-200"
+              >
+                Long Rest ({Math.floor(longRestTime / 60)}:{(longRestTime % 60).toString().padStart(2, "0")})
+              </button>
+              <button 
+                onClick={() => setShowRestSettings(true)} 
+                className="rounded-md border border-gray-200 px-2 py-1.5 hover:bg-gray-50"
+              >
+                <Settings className="h-3.5 w-3.5 text-gray-500" />
+              </button>
+            </div>
           </div>
 
           {isWorkoutComplete ? (
-            <div className="rounded-lg border bg-violet-50 p-6 text-center">
-              <CheckCircle className="mx-auto mb-2 h-12 w-12 text-violet-600" />
-              <h3 className="text-xl font-bold">Workout Complete!</h3>
-              <p className="mt-2 text-gray-600">Great job! You've completed all exercises in this workout.</p>
-              <div className="mt-4 flex justify-center space-x-4">
+            <div className="bg-white shadow-[13px] rounded-md p-4 border border-gray-200 text-center">
+              <CheckCircle className="mx-auto mb-2 h-8 w-8 text-violet-600" />
+              <h3 className="text-[13px] font-bold text-gray-900">Workout Complete!</h3>
+              <p className="mt-1.5 text-[13px] text-gray-500">Great job! You've completed all exercises in this workout.</p>
+              <div className="mt-3 flex justify-center space-x-3">
                 <button
                   onClick={() => (window.location.href = "workouts/history")}
-                  className="rounded-md bg-violet-600 px-4 py-2 text-white hover:bg-violet-600/90"
+                  className="rounded-md bg-violet-600 px-3 py-1.5 text-[13px] text-white hover:bg-violet-600/90"
                 >
                   View History
                 </button>
                 <button
                   onClick={() => (window.location.href = "workouts/create")}
-                  className="rounded-md border px-4 py-2 hover:bg-gray-50"
+                  className="rounded-md border border-gray-200 px-3 py-1.5 text-[13px] hover:bg-gray-50"
                 >
                   New Workout
                 </button>
@@ -508,9 +518,12 @@ export default function ActiveWorkout() {
           ) : (
             <>
               {/* Exercise List */}
-              <div className="rounded-lg border p-4">
-                <h3 className="mb-3 font-bold">Exercises</h3>
-                <div className="space-y-2 max-h-60 overflow-y-auto">
+              <div className="bg-white shadow-[13px] rounded-md p-4 border border-gray-200">
+                <div className="flex items-center mb-3">
+                  <ClipboardList className="h-3.5 w-3.5 text-violet-600 mr-1.5" />
+                  <h2 className="text-[13px] font-medium text-gray-900">Exercises</h2>
+                </div>
+                <div className="space-y-2 max-h-48 overflow-y-auto">
                   {activeWorkout.exercises.map((exercise, idx) => {
                     const completedSets = exercise.sets.filter((s) => s.completed).length
                     const totalSets = exercise.sets.length
@@ -521,19 +534,19 @@ export default function ActiveWorkout() {
                       <div
                         key={idx}
                         className={`flex items-center justify-between rounded-md border p-2 cursor-pointer ${
-                          isActive ? "bg-blue-50 border-blue-300" : isComplete ? "bg-violet-50 border-violet-300" : ""
+                          isActive ? "bg-violet-50 border-violet-200" : isComplete ? "bg-violet-50 border-violet-200" : ""
                         }`}
                         onClick={() => handleSelectExercise(idx)}
                       >
                         <div className="flex items-center">
                           <div
-                            className={`w-2 h-2 rounded-full mr-2 ${
-                              isComplete ? "bg-violet-500" : isActive ? "bg-blue-500" : "bg-gray-300"
+                            className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
+                              isComplete ? "bg-violet-500" : isActive ? "bg-violet-500" : "bg-gray-300"
                             }`}
                           ></div>
                           <div>
-                            <h4 className="font-medium">{exercise.name}</h4>
-                            <p className="text-xs text-gray-500">
+                            <h4 className="text-[13px] font-medium text-gray-900">{exercise.name}</h4>
+                            <p className="text-[10px] text-gray-500">
                               {completedSets}/{totalSets} sets completed
                             </p>
                           </div>
@@ -544,20 +557,20 @@ export default function ActiveWorkout() {
                               e.stopPropagation()
                               handleSkipExercise(idx)
                             }}
-                            className="p-1 text-gray-500 hover:text-blue-500"
+                            className="p-1 text-gray-400 hover:text-violet-500"
                             title="Skip Exercise"
                           >
-                            <SkipForward className="h-4 w-4" />
+                            <SkipForward className="h-3 w-3" />
                           </button>
                           <button
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCompleteExercise(idx)
                             }}
-                            className="p-1 text-gray-500 hover:text-violet-500"
+                            className="p-1 text-gray-400 hover:text-violet-500"
                             title="Complete Exercise"
                           >
-                            <CheckCircle className="h-4 w-4" />
+                            <CheckCircle className="h-3 w-3" />
                           </button>
                         </div>
                       </div>
@@ -568,25 +581,25 @@ export default function ActiveWorkout() {
 
               {/* Current Exercise */}
               {activeWorkout.exercises[currentExerciseIndex] && (
-                <div className="rounded-lg border p-4">
+                <div className="bg-white shadow-[13px] rounded-md p-4 border border-gray-200">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold">{activeWorkout.exercises[currentExerciseIndex].name}</h3>
+                    <h3 className="text-[13px] font-bold text-gray-900">{activeWorkout.exercises[currentExerciseIndex].name}</h3>
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleSkipExercise(currentExerciseIndex)}
-                        className="rounded-md border px-2 py-1 text-sm hover:bg-gray-50"
+                        className="rounded-md border border-gray-200 px-2 py-1 text-[10px] hover:bg-gray-50"
                       >
                         Skip
                       </button>
                       <button
                         onClick={() => handleCompleteExercise(currentExerciseIndex)}
-                        className="rounded-md bg-violet-500 px-2 py-1 text-sm text-white hover:bg-violet-600"
+                        className="rounded-md bg-violet-500 px-2 py-1 text-[10px] text-white hover:bg-violet-600"
                       >
                         Complete All
                       </button>
                     </div>
                   </div>
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-1 text-[10px] text-gray-500">
                     {activeWorkout.exercises[currentExerciseIndex].muscleGroup.charAt(0).toUpperCase() +
                       activeWorkout.exercises[currentExerciseIndex].muscleGroup.slice(1)}{" "}
                     •
@@ -594,31 +607,31 @@ export default function ActiveWorkout() {
                       activeWorkout.exercises[currentExerciseIndex].category.slice(1)}
                   </p>
 
-                  <div className="mt-4">
-                    <div className="rounded-md border">
-                      <div className="grid grid-cols-5 gap-2 border-b p-2 text-xs font-medium">
+                  <div className="mt-3">
+                    <div className="rounded-md border border-gray-200">
+                      <div className="grid grid-cols-5 gap-2 border-b p-2 text-[10px] font-medium text-gray-500">
                         <div>Set</div>
                         <div>Target</div>
                         <div>Completed</div>
                         <div>Weight</div>
                         <div>Status</div>
                       </div>
-                      <div className="divide-y">
+                      <div className="divide-y divide-gray-100">
                         {activeWorkout.exercises[currentExerciseIndex].sets.map((set, idx) => (
                           <div
                             key={idx}
-                            className={`grid grid-cols-5 gap-2 p-2 text-sm ${
-                              idx === currentSetIndex && !set.completed ? "bg-blue-50" : ""
+                            className={`grid grid-cols-5 gap-2 p-2 text-[13px] ${
+                              idx === currentSetIndex && !set.completed ? "bg-violet-50" : ""
                             }`}
                           >
-                            <div>{set.setNumber}</div>
-                            <div>{set.targetReps || set.reps || "-"}</div>
-                            <div className="flex items-center gap-2">
+                            <div className="text-gray-900 font-medium">{set.setNumber}</div>
+                            <div className="text-gray-900">{set.targetReps || set.reps || "-"}</div>
+                            <div className="flex items-center gap-1">
                               <input
                                 type="number"
                                 value={set.completedReps || ""}
                                 onChange={(e) => handleRepsChange(currentExerciseIndex, idx, e.target.value)}
-                                className="w-16 rounded-md border px-2 py-1"
+                                className="w-12 rounded-md border border-gray-200 px-1.5 py-0.5 text-[13px]"
                                 placeholder="Reps"
                               />
                             </div>
@@ -627,26 +640,26 @@ export default function ActiveWorkout() {
                                 type="number"
                                 value={set.weight || ""}
                                 onChange={(e) => handleWeightChange(currentExerciseIndex, idx, e.target.value)}
-                                className="w-16 rounded-md border px-2 py-1"
+                                className="w-12 rounded-md border border-gray-200 px-1.5 py-0.5 text-[13px]"
                                 placeholder="Weight"
                               />
-                              <span className="ml-1 text-xs">{set.weightUnit || "lbs"}</span>
+                              <span className="ml-0.5 text-[10px] text-gray-500">{set.weightUnit || "lbs"}</span>
                             </div>
                             <div className="flex items-center justify-between">
                               {set.completed ? (
-                                <span className="text-violet-500">Completed</span>
+                                <span className="text-[10px] text-violet-500">Completed</span>
                               ) : idx === currentSetIndex ? (
-                                <span className="text-blue-500">Current</span>
+                                <span className="text-[10px] text-violet-500">Current</span>
                               ) : (
-                                <span className="text-gray-400">Pending</span>
+                                <span className="text-[10px] text-gray-400">Pending</span>
                               )}
-                              <button onClick={() => handleSetCompletion(currentExerciseIndex, idx)} className="p-1">
+                              <button onClick={() => handleSetCompletion(currentExerciseIndex, idx)} className="p-0.5">
                                 {set.completed ? (
-                                  <div className="h-5 w-5 rounded-full border-2 border-violet-500 bg-violet-500 flex items-center justify-center">
-                                    <Check className="h-3 w-3 text-white" />
+                                  <div className="h-4 w-4 rounded-full border border-violet-500 bg-violet-500 flex items-center justify-center">
+                                    <Check className="h-2.5 w-2.5 text-white" />
                                   </div>
                                 ) : (
-                                  <div className="h-5 w-5 rounded-full border-2 border-gray-300 hover:border-violet-500"></div>
+                                  <div className="h-4 w-4 rounded-full border border-gray-300 hover:border-violet-500"></div>
                                 )}
                               </button>
                             </div>
@@ -664,13 +677,13 @@ export default function ActiveWorkout() {
 
       {showRestSettings && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-full max-w-md rounded-lg bg-white p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-bold">Rest Timer Settings</h2>
+          <div className="w-full max-w-[13px] rounded-lg bg-white p-4 shadow-lg">
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-[13px] font-bold text-gray-900">Rest Timer Settings</h2>
               <button onClick={() => setShowRestSettings(false)} className="text-gray-500 hover:text-gray-700">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -680,9 +693,9 @@ export default function ActiveWorkout() {
               </button>
             </div>
 
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label htmlFor="short-rest" className="block text-sm font-medium">
+            <div className="space-y-3">
+              <div className="space-y-1.5">
+                <label htmlFor="short-rest" className="block text-[13px] font-medium text-gray-700">
                   Short Rest (seconds)
                 </label>
                 <input
@@ -690,12 +703,12 @@ export default function ActiveWorkout() {
                   type="number"
                   value={shortRestTime}
                   onChange={(e) => setShortRestTime(Number.parseInt(e.target.value))}
-                  className="w-full rounded-md border px-3 py-2"
+                  className="w-full rounded-md border border-gray-200 px-2.5 py-1.5 text-[13px]"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="long-rest" className="block text-sm font-medium">
+              <div className="space-y-1.5">
+                <label htmlFor="long-rest" className="block text-[13px] font-medium text-gray-700">
                   Long Rest (seconds)
                 </label>
                 <input
@@ -703,20 +716,20 @@ export default function ActiveWorkout() {
                   type="number"
                   value={longRestTime}
                   onChange={(e) => setLongRestTime(Number.parseInt(e.target.value))}
-                  className="w-full rounded-md border px-3 py-2"
+                  className="w-full rounded-md border border-gray-200 px-2.5 py-1.5 text-[13px]"
                 />
               </div>
             </div>
 
-            <div className="mt-6 flex justify-end space-x-2">
+            <div className="mt-4 flex justify-end space-x-2">
               <button
-                className="rounded-md border px-4 py-2 hover:bg-gray-50"
+                className="rounded-md border border-gray-200 px-3 py-1.5 text-[13px] hover:bg-gray-50"
                 onClick={() => setShowRestSettings(false)}
               >
                 Cancel
               </button>
               <button
-                className="rounded-md bg-violet-600 px-4 py-2 text-white hover:bg-violet-600/90"
+                className="rounded-md bg-violet-600 px-3 py-1.5 text-[13px] text-white hover:bg-violet-600/90"
                 onClick={handleUpdateRestTimes}
               >
                 Save

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import { Menu, X, User, Heart, LogOut, HelpCircle, Home, Users, Settings, Edit, Activity } from "react-feather"
+import { CiDumbbell } from "react-icons/ci";
+
 import Button from "../ui/Button"
 import { overlayState } from "../../recoil/atoms"
 import { useSetRecoilState } from "recoil"
@@ -34,23 +36,28 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-white shadow-sm">
+            <header className="bg-white shadow-[13px]">
                 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
                     <Link to="/" className="flex items-center">
                         <span className="text-xl font-bold text-violet-600">Health Sync</span>
                     </Link>
 
                    <div className="flex justify-center items-center gap-6">
+                  
                 
                    <div className="flex items-center gap-4">
                         {isAuthenticated || currentUser ? (
-                            <button
+                            <>
+                   
+                    <button
                                 onClick={toggleNav}
                                 className="p-1 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none"
                                 aria-label="Open navigation menu"
                             >
                                 <Menu className="h-6 w-6" />
                             </button>
+                            </>
+                            
                         ) : (
                             <>
                                 <Link 
@@ -113,24 +120,15 @@ const Header = () => {
                                     <span>My Profile</span>
                                 </Link>
                             </li>
+
                             <li>
                                 <Link
-                                    to="/profile/edit"
-                                    className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
-                                    onClick={closeNav}
-                                >
-                                    <Edit className="h-5 w-5 mr-3" />
-                                    <span>Edit Profile</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/health/save"
+                                    to="/workouts"
                                     className="flex items-center p-2 rounded-md text-gray-700 hover:bg-violet-50 hover:text-violet-600"
                                     onClick={closeNav}
                                 >
                                     <Activity className="h-5 w-5 mr-3" />
-                                    <span>Edit Health Details</span>
+                                    <span>Workouts</span>
                                 </Link>
                             </li>
                             <li>

@@ -101,7 +101,7 @@ const Register = () => {
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
               </div>
-              <div className="relative flex justify-center text-sm">
+              <div className="relative flex justify-center text-[13px]">
                 <span className="px-2 bg-white text-gray-500">Or continue with</span>
               </div>
             </div>
@@ -110,7 +110,7 @@ const Register = () => {
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-[13px] text-gray-600">
               Already have an account?{" "}
               <Link to="/login" className="font-medium text-violet-600 hover:text-violet-600">
                 Sign in

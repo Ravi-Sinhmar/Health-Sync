@@ -15,7 +15,7 @@ const HealthStatusBox = ({ isHealthy }) => {
           {isHealthy ? "Healthy" : "Unhealthy"}
         </h2>
       </div>
-      <p className={`mt-1 text-sm ${isHealthy ? "text-green-600" : "text-red-600"}`}>
+      <p className={`mt-1 text-[13px] ${isHealthy ? "text-green-600" : "text-red-600"}`}>
         {isHealthy ? "All health metrics are within normal ranges." : "Some health metrics require attention."}
       </p>
     </div>

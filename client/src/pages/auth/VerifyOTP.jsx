@@ -106,7 +106,7 @@ const VerifyOTP = () => {
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Verify your email
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
+        <p className="mt-2 text-center text-[13px] text-gray-600">
           We've sent a verification code to<br />
           <span className="font-medium text-violet-600">{email}</span>
         </p>
@@ -126,7 +126,7 @@ const VerifyOTP = () => {
             />
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500">
+              <p className="text-[13px] text-gray-500">
                 Time remaining: <span className="font-medium">{formatTime(timeLeft)}</span>
               </p>
               <Button

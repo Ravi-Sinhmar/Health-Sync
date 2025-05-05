@@ -61,7 +61,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-xl shadow-[13px] hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-violet-100 rounded-lg flex items-center justify-center mb-6">
                 <Activity className="text-violet-600" size={24} />
               </div>
@@ -73,7 +73,7 @@ const Home = () => {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-xl shadow-[13px] hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                 <LineChart className="text-green-600" size={24} />
               </div>
@@ -85,7 +85,7 @@ const Home = () => {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-xl shadow-[13px] hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-violet-100 rounded-lg flex items-center justify-center mb-6">
                 <Utensils className="text-violet-600" size={24} />
               </div>
@@ -97,7 +97,7 @@ const Home = () => {
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-xl shadow-[13px] hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Apple className="text-orange-600" size={24} />
               </div>
@@ -108,7 +108,7 @@ const Home = () => {
             </div>
 
             {/* Feature 5 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-xl shadow-[13px] hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                 <Calendar className="text-purple-600" size={24} />
               </div>
@@ -119,7 +119,7 @@ const Home = () => {
             </div>
 
             {/* Feature 6 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-xl shadow-[13px] hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-6">
                 <Award className="text-pink-600" size={24} />
               </div>
@@ -154,7 +154,7 @@ const Home = () => {
               />
             </div>
 
-  <div className="bg-yellow-100 p-8 rounded-2xl shadow-sm border border-gray-100 h-full ">
+  <div className="bg-yellow-100 p-8 rounded-2xl shadow-[13px] border border-gray-100 h-full ">
     <h3 className="text-2xl font-bold text-gray-800 mb-6">Nutrition & Wellness Benefits</h3>
     
     <div className="space-y-6">
@@ -166,7 +166,7 @@ const Home = () => {
         </div>
         <div>
           <h4 className="font-semibold text-gray-800">Improved Energy Levels</h4>
-          <p className="text-gray-600 text-sm mt-1">Balanced nutrition provides sustained energy throughout the day</p>
+          <p className="text-gray-600 text-[13px] mt-1">Balanced nutrition provides sustained energy throughout the day</p>
         </div>
       </div>
 
@@ -178,7 +178,7 @@ const Home = () => {
         </div>
         <div>
           <h4 className="font-semibold text-gray-800">Stronger Immunity</h4>
-          <p className="text-gray-600 text-sm mt-1">Nutrient-rich foods boost your body's natural defenses</p>
+          <p className="text-gray-600 text-[13px] mt-1">Nutrient-rich foods boost your body's natural defenses</p>
         </div>
       </div>
 
@@ -190,7 +190,7 @@ const Home = () => {
         </div>
         <div>
           <h4 className="font-semibold text-gray-800">Better Mental Health</h4>
-          <p className="text-gray-600 text-sm mt-1">Proper nutrition supports brain function and emotional wellbeing</p>
+          <p className="text-gray-600 text-[13px] mt-1">Proper nutrition supports brain function and emotional wellbeing</p>
         </div>
       </div>
     </div>

@@ -244,7 +244,7 @@ const MetricSelectionPage = () => {
                             : 'max-h-0 opacity-0'
                         }`}
                       >
-                        <div className="px-4 pb-4 pt-0 text-gray-600 space-y-2 text-sm">
+                        <div className="px-4 pb-4 pt-0 text-gray-600 space-y-2 text-[13px]">
                           <p><span className="font-semibold">Definition:</span> {metric.description}</p>
                           <p><span className="font-semibold">Clinical Importance:</span> {metric.importance}</p>
                         </div>

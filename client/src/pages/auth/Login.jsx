@@ -79,7 +79,7 @@ const Login = () => {
                 required
               />
               <div className="text-right mt-1">
-                <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-violet-600">
+                <Link to="/forgot-password" className="text-[13px] text-blue-600 hover:text-violet-600">
                   Forgot your password?
                 </Link>
               </div>
@@ -95,7 +95,7 @@ const Login = () => {
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
               </div>
-              <div className="relative flex justify-center text-sm">
+              <div className="relative flex justify-center text-[13px]">
                 <span className="px-2 bg-white text-gray-500">Or continue with</span>
               </div>
             </div>
@@ -104,7 +104,7 @@ const Login = () => {
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-[13px] text-gray-600">
               Don't have an account?{" "}
               <Link to="/register" className="font-medium text-blue-600 hover:text-violet-600">
                 Sign up

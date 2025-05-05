@@ -234,7 +234,7 @@ const Profile = () => {
                   className="group flex items-center gap-1.5 text-violet-600 hover:text-violet-800 transition-colors"
                 >
                   <FileEdit className="size-4" />
-                  <span className="text-xs font-medium  transition-opacity">
+                  <span className="text-[13px] font-medium  transition-opacity">
                     Edit Profile
                   </span>
                 </Link>
@@ -244,12 +244,12 @@ const Profile = () => {
                   <FaUser className="text-violet-600 text-lg" />
                 </div>
                 <h2 className="text-base font-medium text-gray-800">{profile.name}</h2>
-                <p className="text-xs text-gray-500 mb-2">{profile.email}</p>
+                <p className="text-[13px] text-gray-500 mb-2">{profile.email}</p>
 
                 {isMobile && (
                   <button
                     onClick={() => setExpandedProfile(!expandedProfile)}
-                    className="mt-2 px-4 py-1.5 bg-violet-50 text-violet-600 rounded-full text-xs font-medium flex items-center hover:bg-violet-100 transition-colors"
+                    className="mt-2 px-4 py-1.5 bg-violet-50 text-violet-600 rounded-full text-[13px] font-medium flex items-center hover:bg-violet-100 transition-colors"
                   >
                     {expandedProfile ? (
                       <>
@@ -269,33 +269,33 @@ const Profile = () => {
               >
                 {/* Personal Information */}
                 <div className="p-4 border-b">
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">Personal Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <h3 className="text-[13px] font-medium text-gray-700 mb-3">Personal Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[13px]">
                     <div className="flex items-start">
-                      <FaCalendarAlt className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaCalendarAlt className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Date of Birth</p>
+                        <p className="text-[13px] text-gray-500">Date of Birth</p>
                         <p className="text-gray-700">{profile.dob}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaVenusMars className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaVenusMars className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Gender</p>
+                        <p className="text-[13px] text-gray-500">Gender</p>
                         <p className="text-gray-700">{profile.gender}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaTint className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaTint className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Blood Group</p>
+                        <p className="text-[13px] text-gray-500">Blood Group</p>
                         <p className="text-gray-700">{profile.bloodGroup}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaPhone className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaPhone className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Phone</p>
+                        <p className="text-[13px] text-gray-500">Phone</p>
                         <p className="text-gray-700">{profile.phone}</p>
                       </div>
                     </div>
@@ -304,33 +304,33 @@ const Profile = () => {
 
                 {/* Academic Information */}
                 <div className="p-4 border-b">
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">Academic Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <h3 className="text-[13px] font-medium text-gray-700 mb-3">Academic Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[13px]">
                     <div className="flex items-start">
-                      <FaSchool className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaSchool className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Institute</p>
+                        <p className="text-[13px] text-gray-500">Institute</p>
                         <p className="text-gray-700">{profile.instituteName}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaGraduationCap className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaGraduationCap className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Admission Number</p>
+                        <p className="text-[13px] text-gray-500">Admission Number</p>
                         <p className="text-gray-700">{profile.admissionNumber}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaGraduationCap className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaGraduationCap className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Course</p>
+                        <p className="text-[13px] text-gray-500">Course</p>
                         <p className="text-gray-700">{profile.course}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaGraduationCap className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaGraduationCap className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Sports/Activities</p>
+                        <p className="text-[13px] text-gray-500">Sports/Activities</p>
                         <p className="text-gray-700">{profile.sports}</p>
                       </div>
                     </div>
@@ -339,19 +339,19 @@ const Profile = () => {
 
                 {/* Family Information */}
                 <div className="p-4">
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">Family Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <h3 className="text-[13px] font-medium text-gray-700 mb-3">Family Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[13px]">
                     <div className="flex items-start">
-                      <FaUser className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaUser className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Father's Name</p>
+                        <p className="text-[13px] text-gray-500">Father's Name</p>
                         <p className="text-gray-700">{profile.fatherName}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <FaHome className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                      <FaHome className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                       <div>
-                        <p className="text-xs text-gray-500">Address</p>
+                        <p className="text-[13px] text-gray-500">Address</p>
                         <p className="text-gray-700">{profile.address}</p>
                       </div>
                     </div>
@@ -371,7 +371,7 @@ const Profile = () => {
                     className="group flex items-center gap-1.5 text-emerald-600 hover:text-emerald-800 transition-colors"
                   >
                     <ClipboardEdit className="size-4" />
-                    <span className="text-xs font-medium transition-opacity">
+                    <span className="text-[13px] font-medium transition-opacity">
                       Edit Health Data
                     </span>
                   </Link>
@@ -381,7 +381,7 @@ const Profile = () => {
                     className="group flex items-center gap-1.5 text-emerald-600 hover:text-emerald-800 transition-colors"
                   >
                     <ClipboardPlus className="size-4" />
-                    <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[13px] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                       Add Health Data
                     </span>
                   </Link>
@@ -397,7 +397,7 @@ const Profile = () => {
                   />
                 </div>
                 <h2 className="text-base font-medium text-gray-800">Health Overview</h2>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-[13px] text-gray-500 mb-2">
                   {!hasHealthData
                     ? "No health data available"
                     : profile.healthStatus === "healthy"
@@ -408,7 +408,7 @@ const Profile = () => {
                 {isMobile && (
                   <button
                     onClick={() => setExpandedHealth(!expandedHealth)}
-                    className={`mt-2 px-4 py-1.5 ${hasHealthData ? "bg-emerald-50 text-emerald-600 hover:bg-emerald-100" : "bg-amber-50 text-amber-600 hover:bg-amber-100"} rounded-full text-xs font-medium flex items-center transition-colors`}
+                    className={`mt-2 px-4 py-1.5 ${hasHealthData ? "bg-emerald-50 text-emerald-600 hover:bg-emerald-100" : "bg-amber-50 text-amber-600 hover:bg-amber-100"} rounded-full text-[13px] font-medium flex items-center transition-colors`}
                   >
                     {expandedHealth ? (
                       <>
@@ -433,13 +433,13 @@ const Profile = () => {
                         <ClipboardPlus className="text-amber-600 size-6" />
                       </div>
                     </div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">No Health Data Available</h3>
-                    <p className="text-xs text-gray-500 mb-4">
+                    <h3 className="text-[13px] font-medium text-gray-700 mb-2">No Health Data Available</h3>
+                    <p className="text-[13px] text-gray-500 mb-4">
                       Add health information to track and monitor student's health metrics
                     </p>
                     <Link
                       to="/health/save"
-                      className="inline-flex items-center px-4 py-2 bg-emerald-600 text-white text-xs font-medium rounded-md hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center px-4 py-2 bg-emerald-600 text-white text-[13px] font-medium rounded-md hover:bg-emerald-700 transition-colors"
                     >
                       <PlusCircle className="size-3.5 mr-1.5" />
                       Add Health Information
@@ -449,26 +449,26 @@ const Profile = () => {
                   <>
                     {/* Health Summary */}
                     <div className="p-4 border-b">
-                      <h3 className="text-sm font-medium text-gray-700 mb-3">Health Summary</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                      <h3 className="text-[13px] font-medium text-gray-700 mb-3">Health Summary</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[13px]">
                         <div className="flex items-start">
-                          <GiHealthNormal className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                          <GiHealthNormal className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                           <div>
-                            <p className="text-xs text-gray-500">Allergies</p>
+                            <p className="text-[13px] text-gray-500">Allergies</p>
                             <p className="text-gray-700">{profile.allergies}</p>
                           </div>
                         </div>
                         <div className="flex items-start">
-                          <GiHealthNormal className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                          <GiHealthNormal className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                           <div>
-                            <p className="text-xs text-gray-500">Medications</p>
+                            <p className="text-[13px] text-gray-500">Medications</p>
                             <p className="text-gray-700">{profile.medications}</p>
                           </div>
                         </div>
                         <div className="flex items-start">
-                          <FaPhone className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-xs" />
+                          <FaPhone className="text-gray-400 mt-0.5 mr-2 flex-shrink-0 text-[13px]" />
                           <div>
-                            <p className="text-xs text-gray-500">Emergency Contact</p>
+                            <p className="text-[13px] text-gray-500">Emergency Contact</p>
                             <p className="text-gray-700">{profile.emergencyContact}</p>
                           </div>
                         </div>
@@ -477,7 +477,7 @@ const Profile = () => {
 
                     {/* Health Metrics */}
                     <div className="p-4">
-                      <h3 className="text-sm font-medium text-gray-700 mb-3">Health Metrics</h3>
+                      <h3 className="text-[13px] font-medium text-gray-700 mb-3">Health Metrics</h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {Object.entries(formatHealthMetrics()).map(([key, metric]) => (
                           <HealthMetricCard
@@ -487,7 +487,7 @@ const Profile = () => {
                             unit={metric.unit}
                             status={metric.status}
                             normalRange={metric.normalRange}
-                            className="text-xs"
+                            className="text-[13px]"
                           />
                         ))}
                       </div>

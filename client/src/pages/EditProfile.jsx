@@ -135,9 +135,9 @@ const EditProfile = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
         <div className="mb-6">
-          <a href="/profile" className="inline-flex items-center text-sm font-medium text-violet-600 hover:text-violet-800">
+          <a href="/profile" className="inline-flex items-center text-[13px] font-medium text-violet-600 hover:text-violet-800">
             <FaArrowLeft size={16} className="mr-1" />
             Back to Profile
           </a>
@@ -145,7 +145,7 @@ const EditProfile = () => {
         <form onSubmit={handleSubmit}>
         <div className="bg-gradient-to-r from-violet-500 to-purple-600 px-6 py-4 rounded-t-md">
             <h1 className="text-xl font-medium text-white">Edit Profile Information</h1>
-            <p className="text-violet-100 text-sm mt-1">
+            <p className="text-violet-100 text-[13px] mt-1">
               Update the profile details of {formData.name || "the student"}
             </p>
           </div>
@@ -162,15 +162,15 @@ const EditProfile = () => {
                 className="text-center text-base font-medium text-gray-800 border-b border-transparent hover:border-gray-300 focus:border-violet-600 focus:outline-none py-1 px-2"
                 required
               />
-              <p className="text-xs text-gray-500 mb-2">{formData.email}</p>
+              <p className="text-[13px] text-gray-500 mb-2">{formData.email}</p>
             </div>
 
             <div className="p-4 border-b">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">Personal Information</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <h3 className="text-[13px] font-medium text-gray-700 mb-3">Personal Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaCalendarAlt className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaCalendarAlt className="text-gray-400 mr-2 text-[13px]" />
                     Date of Birth
                   </label>
                   <input
@@ -178,19 +178,19 @@ const EditProfile = () => {
                     name="dob"
                     value={formData.dob}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaVenusMars className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaVenusMars className="text-gray-400 mr-2 text-[13px]" />
                     Gender
                   </label>
                   <select
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   >
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -198,15 +198,15 @@ const EditProfile = () => {
                   </select>
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaTint className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaTint className="text-gray-400 mr-2 text-[13px]" />
                     Blood Group
                   </label>
                   <select
                     name="bloodGroup"
                     value={formData.bloodGroup}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   >
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -219,8 +219,8 @@ const EditProfile = () => {
                   </select>
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaPhone className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaPhone className="text-gray-400 mr-2 text-[13px]" />
                     Phone
                   </label>
                   <input
@@ -228,18 +228,18 @@ const EditProfile = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
               </div>
             </div>
 
             <div className="p-4 border-b">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">Academic Information</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <h3 className="text-[13px] font-medium text-gray-700 mb-3">Academic Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaSchool className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaSchool className="text-gray-400 mr-2 text-[13px]" />
                     Institute
                   </label>
                   <input
@@ -247,12 +247,12 @@ const EditProfile = () => {
                     name="instituteName"
                     value={formData.instituteName}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaGraduationCap className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaGraduationCap className="text-gray-400 mr-2 text-[13px]" />
                     Admission Number
                   </label>
                   <input
@@ -260,12 +260,12 @@ const EditProfile = () => {
                     name="admissionNumber"
                     value={formData.admissionNumber}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaGraduationCap className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaGraduationCap className="text-gray-400 mr-2 text-[13px]" />
                     Course
                   </label>
                   <input
@@ -273,12 +273,12 @@ const EditProfile = () => {
                     name="course"
                     value={formData.course}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaGraduationCap className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaGraduationCap className="text-gray-400 mr-2 text-[13px]" />
                     Sports/Activities
                   </label>
                   <input
@@ -286,18 +286,18 @@ const EditProfile = () => {
                     name="sports"
                     value={formData.sports}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
               </div>
             </div>
 
             <div className="p-4">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">Family Information</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <h3 className="text-[13px] font-medium text-gray-700 mb-3">Family Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaUser className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaUser className="text-gray-400 mr-2 text-[13px]" />
                     Father's Name
                   </label>
                   <input
@@ -305,12 +305,12 @@ const EditProfile = () => {
                     name="fatherName"
                     value={formData.fatherName}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaHome className="text-gray-400 mr-2 text-xs" />
+                  <label className="flex items-center text-[13px] text-gray-500">
+                    <FaHome className="text-gray-400 mr-2 text-[13px]" />
                     Address
                   </label>
                   <input
@@ -318,22 +318,10 @@ const EditProfile = () => {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
+                    className="w-full p-2 border rounded-md text-[13px]"
                   />
                 </div>
-                <div className="space-y-1 md:col-span-2">
-                  <label className="flex items-center text-xs text-gray-500">
-                    <FaPhone className="text-gray-400 mr-2 text-xs" />
-                    Emergency Contact
-                  </label>
-                  <input
-                    type="text"
-                    name="emergencyContact"
-                    value={formData.emergencyContact}
-                    onChange={handleChange}
-                    className="w-full p-2 border rounded-md text-xs"
-                  />
-                </div>
+
               </div>
             </div>
 

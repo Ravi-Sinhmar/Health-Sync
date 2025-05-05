@@ -16,8 +16,8 @@ const Users = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedUser, setSelectedUser] = useState(null)
   const [showUserDetails, setShowUserDetails] = useState(false)
-  const [totalUsers, setTotalUsers] = useState(0)
-  const [totalPages, setTotalPages] = useState(1)
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
 
   const usersPerPage = 10
 
@@ -137,37 +137,37 @@ const Users = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-[13px] font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-[13px] font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Email
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-[13px] font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Phone
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-[13px] font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Institute
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-[13px] font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Date
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-right text-[13px] font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Action
                   </th>
@@ -178,21 +178,21 @@ const Users = () => {
                   users.map((user) => (
                     <tr key={user._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{user.name || "N/A"}</div>
+                        <div className="text-[13px] font-medium text-gray-900">{user.name || "N/A"}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-500">{user.email}</div>
+                        <div className="text-[13px] text-gray-500">{user.email}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-500">{user.phone || "N/A"}</div>
+                        <div className="text-[13px] text-gray-500">{user.phone || "N/A"}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-500">{user.instituteName || "N/A"}</div>
+                        <div className="text-[13px] text-gray-500">{user.instituteName || "N/A"}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-500">{new Date(user.createdAt).toLocaleDateString()}</div>
+                        <div className="text-[13px] text-gray-500">{new Date(user.createdAt).toLocaleDateString()}</div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-[13px] font-medium">
                         <button
                           onClick={() => handleViewProfile(user)}
                           className="text-violet-600 hover:text-violet-900"
@@ -204,7 +204,7 @@ const Users = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={6} className="px-6 py-4 text-center text-sm text-gray-500">
+                    <td colSpan={6} className="px-6 py-4 text-center text-[13px] text-gray-500">
                       No users found
                     </td>
                   </tr>
@@ -218,7 +218,7 @@ const Users = () => {
             <div className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6 mt-4">
               <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-[13px] text-gray-700">
                     Showing{" "}
                     <span className="font-medium">{users.length > 0 ? (currentPage - 1) * usersPerPage + 1 : 0}</span>{" "}
                     to <span className="font-medium">{Math.min(currentPage * usersPerPage, totalUsers)}</span> of{" "}
@@ -226,11 +226,11 @@ const Users = () => {
                   </p>
                 </div>
                 <div>
-                  <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                  <nav className="relative z-0 inline-flex rounded-md shadow-[13px] -space-x-px" aria-label="Pagination">
                     <button
                       onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                       disabled={currentPage === 1}
-                      className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium ${
+                      className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-[13px] font-medium ${
                         currentPage === 1 ? "text-gray-300 cursor-not-allowed" : "text-gray-500 hover:bg-gray-50"
                       }`}
                     >
@@ -254,7 +254,7 @@ const Users = () => {
                         <button
                           key={pageNum}
                           onClick={() => setCurrentPage(pageNum)}
-                          className={`relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium ${
+                          className={`relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-[13px] font-medium ${
                             currentPage === pageNum
                               ? "z-10 bg-violet-50 border-violet-600 text-violet-600"
                               : "text-gray-500 hover:bg-gray-50"
@@ -267,7 +267,7 @@ const Users = () => {
                     <button
                       onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                       disabled={currentPage === totalPages}
-                      className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium ${
+                      className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-[13px] font-medium ${
                         currentPage === totalPages
                           ? "text-gray-300 cursor-not-allowed"
                           : "text-gray-500 hover:bg-gray-50"
@@ -284,7 +284,7 @@ const Users = () => {
                 <button
                   onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
-                  className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md ${
+                  className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-[13px] font-medium rounded-md ${
                     currentPage === 1 ? "text-gray-300 bg-gray-100" : "text-gray-700 bg-white hover:bg-gray-50"
                   }`}
                 >
@@ -293,7 +293,7 @@ const Users = () => {
                 <button
                   onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
-                  className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md ${
+                  className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-[13px] font-medium rounded-md ${
                     currentPage === totalPages ? "text-gray-300 bg-gray-100" : "text-gray-700 bg-white hover:bg-gray-50"
                   }`}
                 >
@@ -330,23 +330,23 @@ const Users = () => {
                       </span>
                     </div>
                     <h2 className="text-lg font-semibold text-gray-800 text-center">{selectedUser.name || "N/A"}</h2>
-                    <p className="text-sm text-gray-500 mb-4 text-center">{selectedUser.email}</p>
+                    <p className="text-[13px] text-gray-500 mb-4 text-center">{selectedUser.email}</p>
                   </div>
 
                   <div className="sm:w-2/3">
                     <h3 className="text-md font-medium text-gray-900 mb-3">Personal Information</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                       <div>
-                        <h4 className="text-xs font-medium text-gray-500">Phone</h4>
-                        <p className="mt-1 text-sm">{selectedUser.phone || "N/A"}</p>
+                        <h4 className="text-[13px] font-medium text-gray-500">Phone</h4>
+                        <p className="mt-1 text-[13px]">{selectedUser.phone || "N/A"}</p>
                       </div>
                       <div>
-                        <h4 className="text-xs font-medium text-gray-500">Institute</h4>
-                        <p className="mt-1 text-sm">{selectedUser.instituteName || "N/A"}</p>
+                        <h4 className="text-[13px] font-medium text-gray-500">Institute</h4>
+                        <p className="mt-1 text-[13px]">{selectedUser.instituteName || "N/A"}</p>
                       </div>
                       <div>
-                        <h4 className="text-xs font-medium text-gray-500">Joined Date</h4>
-                        <p className="mt-1 text-sm">{new Date(selectedUser.createdAt).toLocaleDateString()}</p>
+                        <h4 className="text-[13px] font-medium text-gray-500">Joined Date</h4>
+                        <p className="mt-1 text-[13px]">{new Date(selectedUser.createdAt).toLocaleDateString()}</p>
                       </div>
                     </div>
 

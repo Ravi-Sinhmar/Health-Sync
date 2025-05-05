@@ -11,7 +11,7 @@ const Footer = () => {
               <Heart className="h-6 w-6 text-violet-400 mr-2" />
               <span className="text-xl font-bold">Health Sync</span>
             </div>
-            <p className="text-sm text-gray-300 mb-4">
+            <p className="text-[13px] text-gray-300 mb-4">
               Comprehensive health tracking for students and athletes. Monitor your vital signs, performance metrics,
               and overall wellness.
             </p>
@@ -35,25 +35,25 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Quick Links</h3>
+            <h3 className="text-[13px] font-semibold uppercase tracking-wider mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/" className="text-[13px] text-gray-300 hover:text-white">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/dashboard" className="text-[13px] text-gray-300 hover:text-white">
                   Dashboard
                 </Link>
               </li>
               <li>
-                <Link to="/profile" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/profile" className="text-[13px] text-gray-300 hover:text-white">
                   Profile
                 </Link>
               </li>
               <li>
-                <Link to="/select-metrics" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/select-metrics" className="text-[13px] text-gray-300 hover:text-white">
                   Health Metrics
                 </Link>
               </li>
@@ -61,25 +61,25 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Resources</h3>
+            <h3 className="text-[13px] font-semibold uppercase tracking-wider mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/help" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/help" className="text-[13px] text-gray-300 hover:text-white">
                   Help & Support
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <a href="#" className="text-[13px] text-gray-300 hover:text-white">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <a href="#" className="text-[13px] text-gray-300 hover:text-white">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <a href="#" className="text-[13px] text-gray-300 hover:text-white">
                   FAQ
                 </a>
               </li>
@@ -87,26 +87,26 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Contact Us</h3>
+            <h3 className="text-[13px] font-semibold uppercase tracking-wider mb-4">Contact Us</h3>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-gray-400 mr-2 mt-0.5" />
-                <span className="text-sm text-gray-300">123 Health Street, Medical District, City, 12345</span>
+                <span className="text-[13px] text-gray-300">123 Health Street, Medical District, City, 12345</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-gray-400 mr-2" />
-                <span className="text-sm text-gray-300">+1 (123) 456-7890</span>
+                <span className="text-[13px] text-gray-300">+1 (123) 456-7890</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-gray-400 mr-2" />
-                <span className="text-sm text-gray-300">support@healthsync.com</span>
+                <span className="text-[13px] text-gray-300">support@healthsync.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-8 pt-6 border-t border-gray-700">
-          <p className="text-sm text-gray-400 text-center">
+          <p className="text-[13px] text-gray-400 text-center">
             &copy; {new Date().getFullYear()} HealthTrack. All rights reserved.
           </p>
         </div>

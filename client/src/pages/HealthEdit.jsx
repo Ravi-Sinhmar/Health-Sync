@@ -140,7 +140,7 @@ const HealthEdit = () => {
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          <p className="mt-3 text-sm text-gray-600">Loading student health data...</p>
+          <p className="mt-3 text-[13px] text-gray-600">Loading student health data...</p>
         </div>
       </div>
     )
@@ -150,17 +150,17 @@ const HealthEdit = () => {
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="mb-6">
-          <a href="/" className="inline-flex items-center text-sm font-medium text-violet-600 hover:text-violet-800">
+          <a href="/" className="inline-flex items-center text-[13px] font-medium text-violet-600 hover:text-violet-800">
             <ArrowLeft size={16} className="mr-1" />
             Back to Profile
           </a>
         </div>
 
-        <div className="bg-white shadow-sm rounded-lg overflow-hidden">
+        <div className="bg-white shadow-[13px] rounded-lg overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-violet-500 to-purple-600 px-6 py-4">
             <h1 className="text-xl font-medium text-white">Edit Health Information</h1>
-            <p className="text-violet-100 text-sm mt-1">
+            <p className="text-violet-100 text-[13px] mt-1">
               Update the health details of {formData.name || "the student"}
             </p>
           </div>
@@ -169,13 +169,13 @@ const HealthEdit = () => {
           <form onSubmit={handleSubmit} className="px-6 py-4 space-y-6">
             {/* Status messages */}
             {success && (
-              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm">
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-[13px]">
                 Health information updated successfully!
               </div>
             )}
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm flex items-center">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-[13px] flex items-center">
                 <AlertCircle size={16} className="mr-2" />
                 {error}
               </div>
@@ -183,10 +183,10 @@ const HealthEdit = () => {
 
             {/* Student Identification - Priority 1 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Student Identification</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Student Identification</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="studentId" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="studentId" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Student ID / Admission Number
                   </label>
                   <input
@@ -195,12 +195,12 @@ const HealthEdit = () => {
                     name="studentId"
                     value={formData.studentId}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-md  shadow-sm focus:border-violet-500 border outline-none border-violet-500 py-1 px-2"
+                    className="w-full text-[13px] rounded-md  shadow-[13px] focus:border-violet-500 border outline-none border-violet-500 py-1 px-2"
                     readOnly
                   />
                 </div>
                 <div>
-                  <label htmlFor="name" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Full Name
                   </label>
                   <input
@@ -209,7 +209,7 @@ const HealthEdit = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                    className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
               </div>
@@ -217,10 +217,10 @@ const HealthEdit = () => {
 
             {/* Basic Information - Priority 2 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Basic Information</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Basic Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="age" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="age" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Age
                   </label>
                   <input
@@ -229,11 +229,11 @@ const HealthEdit = () => {
                     name="age"
                     value={formData.age}
                     onChange={handleChange}
-                   className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                   className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="gender" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="gender" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Gender
                   </label>
                   <select
@@ -241,7 +241,7 @@ const HealthEdit = () => {
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
-className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   >
                     <option value="">Select</option>
                     <option value="male">Male</option>
@@ -250,7 +250,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="lastCheckupDate" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="lastCheckupDate" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Last Checkup Date
                   </label>
                   <input
@@ -259,7 +259,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="lastCheckupDate"
                     value={formData.lastCheckupDate}
                     onChange={handleChange}
-                  className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                  className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
               </div>
@@ -267,11 +267,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
 
             {/* Physical Measurements - Priority 3 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Physical Measurements</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Physical Measurements</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="height" className="block text-xs font-medium text-gray-700 mb-1">
-                    Height (cm) <span className="text-xs text-gray-500">[Normal: 100-200]</span>
+                  <label htmlFor="height" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Height (cm) <span className="text-[13px] text-gray-500">[Normal: 100-200]</span>
                   </label>
                   <input
                     type="number"
@@ -279,12 +279,12 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="height"
                     value={formData.height}
                     onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="weight" className="block text-xs font-medium text-gray-700 mb-1">
-                    Weight (kg) <span className="text-xs text-gray-500">[Normal: 20-100]</span>
+                  <label htmlFor="weight" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Weight (kg) <span className="text-[13px] text-gray-500">[Normal: 20-100]</span>
                   </label>
                   <input
                     type="number"
@@ -292,12 +292,12 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="weight"
                     value={formData.weight}
                     onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="bmi" className="block text-xs font-medium text-gray-700 mb-1">
-                    BMI <span className="text-xs text-gray-500">[Normal: 18.5-24.9]</span>
+                  <label htmlFor="bmi" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    BMI <span className="text-[13px] text-gray-500">[Normal: 18.5-24.9]</span>
                   </label>
                   <input
                     type="text"
@@ -305,7 +305,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="bmi"
                     value={formData.bmi}
                     readOnly
-              className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+              className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
               </div>
@@ -313,11 +313,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
 
             {/* Vital Signs - Priority 4 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Vital Signs</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Vital Signs</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="bloodPressureSystolic" className="block text-xs font-medium text-gray-700 mb-1">
-                    Blood Pressure (Systolic) <span className="text-xs text-gray-500">[Normal: 90-120]</span>
+                  <label htmlFor="bloodPressureSystolic" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Blood Pressure (Systolic) <span className="text-[13px] text-gray-500">[Normal: 90-120]</span>
                   </label>
                   <div className="flex">
                     <input
@@ -326,16 +326,16 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                       name="bloodPressureSystolic"
                       value={formData.bloodPressureSystolic}
                       onChange={handleChange}
-                  className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                  className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                     />
-                    <span className="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
+                    <span className="inline-flex items-center px-3 text-[13px] text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
                       mmHg
                     </span>
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="bloodPressureDiastolic" className="block text-xs font-medium text-gray-700 mb-1">
-                    Blood Pressure (Diastolic) <span className="text-xs text-gray-500">[Normal: 60-80]</span>
+                  <label htmlFor="bloodPressureDiastolic" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Blood Pressure (Diastolic) <span className="text-[13px] text-gray-500">[Normal: 60-80]</span>
                   </label>
                   <div className="flex">
                     <input
@@ -344,16 +344,16 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                       name="bloodPressureDiastolic"
                       value={formData.bloodPressureDiastolic}
                       onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                     />
-                    <span className="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
+                    <span className="inline-flex items-center px-3 text-[13px] text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
                       mmHg
                     </span>
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="heartRate" className="block text-xs font-medium text-gray-700 mb-1">
-                    Heart Rate <span className="text-xs text-gray-500">[Normal: 60-100]</span>
+                  <label htmlFor="heartRate" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Heart Rate <span className="text-[13px] text-gray-500">[Normal: 60-100]</span>
                   </label>
                   <div className="flex">
                     <input
@@ -362,16 +362,16 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                       name="heartRate"
                       value={formData.heartRate}
                       onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                     />
-                    <span className="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
+                    <span className="inline-flex items-center px-3 text-[13px] text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
                       bpm
                     </span>
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="temperature" className="block text-xs font-medium text-gray-700 mb-1">
-                    Temperature <span className="text-xs text-gray-500">[Normal: 36.1-37.2]</span>
+                  <label htmlFor="temperature" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Temperature <span className="text-[13px] text-gray-500">[Normal: 36.1-37.2]</span>
                   </label>
                   <div className="flex">
                     <input
@@ -381,16 +381,16 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                       step="0.1"
                       value={formData.temperature}
                       onChange={handleChange}
-                    className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                    className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                     />
-                    <span className="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
+                    <span className="inline-flex items-center px-3 text-[13px] text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
                       °C
                     </span>
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="oxygenSaturation" className="block text-xs font-medium text-gray-700 mb-1">
-                    Oxygen Saturation <span className="text-xs text-gray-500">[Normal: 95-100]</span>
+                  <label htmlFor="oxygenSaturation" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Oxygen Saturation <span className="text-[13px] text-gray-500">[Normal: 95-100]</span>
                   </label>
                   <div className="flex">
                     <input
@@ -399,9 +399,9 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                       name="oxygenSaturation"
                       value={formData.oxygenSaturation}
                       onChange={handleChange}
-                    className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                    className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                     />
-                    <span className="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
+                    <span className="inline-flex items-center px-3 text-[13px] text-gray-500 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md">
                       %
                     </span>
                   </div>
@@ -411,10 +411,10 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
 
             {/* Health Assessments - Priority 5 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Health Assessments</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Health Assessments</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="vision" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="vision" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Vision Assessment
                   </label>
                   <select
@@ -422,7 +422,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="vision"
                     value={formData.vision}
                     onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   >
                     <option value="">Select</option>
                     <option value="normal">Normal</option>
@@ -431,7 +431,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="hearing" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="hearing" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Hearing Assessment
                   </label>
                   <select
@@ -439,7 +439,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="hearing"
                     value={formData.hearing}
                     onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   >
                     <option value="">Select</option>
                     <option value="normal">Normal</option>
@@ -453,10 +453,10 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
 
             {/* Medical Information - Priority 6 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Medical Information</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Medical Information</h2>
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="allergies" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="allergies" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Allergies
                   </label>
                   <input
@@ -466,11 +466,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     value={formData.allergies}
                     onChange={handleChange}
                     placeholder="List any allergies"
-                className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="medications" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="medications" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Current Medications
                   </label>
                   <input
@@ -480,11 +480,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     value={formData.medications}
                     onChange={handleChange}
                     placeholder="List any medications"
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="chronicConditions" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="chronicConditions" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Chronic Conditions
                   </label>
                   <input
@@ -494,11 +494,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     value={formData.chronicConditions}
                     onChange={handleChange}
                     placeholder="List any chronic conditions"
-                  className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                  className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="immunizations" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="immunizations" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Immunization Status
                   </label>
                   <input
@@ -508,7 +508,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     value={formData.immunizations}
                     onChange={handleChange}
                     placeholder="List immunizations"
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
               </div>
@@ -516,10 +516,10 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
 
             {/* Lifestyle Information - Priority 7 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Lifestyle Information</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Lifestyle Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="dietaryRestrictions" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="dietaryRestrictions" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Dietary Restrictions
                   </label>
                   <input
@@ -528,11 +528,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="dietaryRestrictions"
                     value={formData.dietaryRestrictions}
                     onChange={handleChange}
-                 className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                 className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="physicalActivity" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="physicalActivity" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Physical Activity (hours/week)
                   </label>
                   <input
@@ -541,12 +541,12 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="physicalActivity"
                     value={formData.physicalActivity}
                     onChange={handleChange}
-                className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="sleepHours" className="block text-xs font-medium text-gray-700 mb-1">
-                    Sleep (hours/day) <span className="text-xs text-gray-500">[Normal: 7-9]</span>
+                  <label htmlFor="sleepHours" className="block text-[13px] font-medium text-gray-700 mb-1">
+                    Sleep (hours/day) <span className="text-[13px] text-gray-500">[Normal: 7-9]</span>
                   </label>
                   <input
                     type="number"
@@ -554,11 +554,11 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="sleepHours"
                     value={formData.sleepHours}
                     onChange={handleChange}
-                className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="mentalHealthNotes" className="block text-xs font-medium text-gray-700 mb-1">
+                  <label htmlFor="mentalHealthNotes" className="block text-[13px] font-medium text-gray-700 mb-1">
                     Mental Health Notes
                   </label>
                   <input
@@ -567,7 +567,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                     name="mentalHealthNotes"
                     value={formData.mentalHealthNotes}
                     onChange={handleChange}
-                className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+                className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                   />
                 </div>
               </div>
@@ -575,9 +575,9 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
 
             {/* Emergency Contact - Priority 8 */}
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">Emergency Contact</h2>
+              <h2 className="text-[13px] font-medium text-gray-700 mb-3">Emergency Contact</h2>
               <div>
-                <label htmlFor="emergencyContact" className="block text-xs font-medium text-gray-700 mb-1">
+                <label htmlFor="emergencyContact" className="block text-[13px] font-medium text-gray-700 mb-1">
                   Emergency Contact Information
                 </label>
                 <input
@@ -587,7 +587,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
                   value={formData.emergencyContact}
                   onChange={handleChange}
                   placeholder="Name, relationship, phone number"
-               className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
+               className="w-full text-[13px] rounded-[13px] shadow-[13px]  border border-violet-500 py-1 px-2 focus:border-violet-500 outline-none"
                 />
               </div>
             </div>
@@ -597,7 +597,7 @@ className="w-full text-sm rounded-sm shadow-sm  border border-violet-500 py-1 px
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 disabled:opacity-50"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-[13px] font-medium rounded-md shadow-[13px] text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 disabled:opacity-50"
               >
                 {loading ? (
                   <span className="flex items-center">

@@ -139,7 +139,7 @@ const CompleteProfile = () => {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-extrabold text-gray-900">Complete Your Profile</h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-[13px] text-gray-600">
             Please provide your personal information to complete your registration
           </p>
         </div>

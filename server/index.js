@@ -12,6 +12,13 @@ const test = require('./models/test');
 const workoutRoutes = require('./routes/workouts');
 const exerciseRoutes = require('./routes/exercises');
 
+// Meal Routes
+const healthMetricsRoute = require('./routes/healthMetrics');
+const mealLogsRoute = require('./routes/mealLogs');
+const mealPlanRoute = require('./routes/mealPlans');
+const mealsRoute = require('./routes/meals');
+
+
 
 
 const Remote_url = process.env.NODE_ENV == 'Production' ? process.env.Remote_url : 'http://localhost:5173'
@@ -55,11 +62,15 @@ app.use("/students", studentRoutes)
 app.use("/support", supportRoutes)
 
 
-
-
 // Add these lines after your existing routes
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/exercises", exerciseRoutes);
+app.use("/api/meals",mealsRoute);
+app.use("/api/meal-logs",mealLogsRoute);
+app.use("/api/meal-plans",mealPlanRoute);
+app.use("/api/health-metrics",healthMetricsRoute);
+
+
 
 // Add this to seed initial exercise data (run once)
 const seedExercises = async () => {
