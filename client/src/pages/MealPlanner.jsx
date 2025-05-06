@@ -339,9 +339,7 @@ export default function MealPlanner() {
         </button>
       </div>
 
-      {/* Page title */}
-      <h1 className="text-lg font-semibold text-gray-900 mb-4">Meal Planner</h1>
-
+     
       {/* Navigation tabs */}
       <div className="flex overflow-x-auto mb-5 pb-1 border-b">
         {navItems.map((item) => (

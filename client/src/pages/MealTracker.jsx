@@ -359,14 +359,12 @@ export default function MealTracker() {
                     onClick={() => navigate("/profile")}
                     className="inline-flex items-center text-[13px] font-medium text-gray-700 hover:text-violet-600 transition-colors"
                 >
-                    <BackArrow className="mr-1.5 h-4 w-4" />
+                    <ArrowLeft className="mr-1.5 h-4 w-4" />
                     Back to Profile
                 </button>
             </div>
 
-            {/* Page title */}
-            <h1 className="text-lg font-semibold text-gray-900 mb-4">Meal Tracker</h1>
-
+     
             {/* Navigation tabs */}
             <div className="flex overflow-x-auto mb-5 pb-1 border-b">
                 {navItems.map((item) => (
