@@ -3,7 +3,7 @@ const Student = require("../models/Student")
 // Update student health metrics
 exports.updateHealthMetrics = async (req, res) => {
   try {
-    const student = await Student.findById(req.student.studentId)
+    const student = await Student.findById(req.user.email)
 
     if (!student) {
       return res.status(404).json({ msg: "Student not found" })
@@ -48,7 +48,7 @@ exports.updateHealthMetrics = async (req, res) => {
 // Get student health metrics
 exports.getHealthMetrics = async (req, res) => {
   try {
-    const student = await Student.findById(req.student.studentId)
+    const student = await Student.findById(req.user.id)
 
     if (!student) {
       return res.status(404).json({ msg: "Student not found" })
@@ -80,6 +80,7 @@ exports.getHealthMetrics = async (req, res) => {
 
     res.status(200).json({ healthMetrics })
   } catch (error) {
+    console.log(error);
     res.status(500).json({ msg: error.message })
   }
 }

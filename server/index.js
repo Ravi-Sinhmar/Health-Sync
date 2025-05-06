@@ -17,7 +17,8 @@ const healthMetricsRoute = require('./routes/healthMetrics');
 const mealLogsRoute = require('./routes/mealLogs');
 const mealPlanRoute = require('./routes/mealPlans');
 const mealsRoute = require('./routes/meals');
-
+// Chat Routes
+const chatRoute = require('./routes/chatRoutes');
 
 
 
@@ -69,6 +70,7 @@ app.use("/api/meals",mealsRoute);
 app.use("/api/meal-logs",mealLogsRoute);
 app.use("/api/meal-plans",mealPlanRoute);
 app.use("/api/health-metrics",healthMetricsRoute);
+app.use("/chat",chatRoute)
 
 
 

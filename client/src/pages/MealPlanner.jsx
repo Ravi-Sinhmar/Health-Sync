@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import apiConfig from "../config/api"
 import {
   ChevronLeft,
   ChevronRight,
@@ -92,7 +93,9 @@ export default function MealPlanner() {
         // Format the date for the API
         const weekStartDate = currentWeek[0].toISOString().split("T")[0]
 
-        const response = await fetch(`/api/meal-plans/week/${weekStartDate}`)
+        const response = await fetch(`${apiConfig.baseURL}/api/meal-plans/week/${weekStartDate}`, {
+          credentials: "include",
+        })
 
         if (!response.ok) {
           throw new Error("Failed to fetch meal plans")
@@ -177,8 +180,11 @@ export default function MealPlanner() {
   async function handleAddMeal(mealData) {
     try {
       // First create the meal
-      const mealResponse = await fetch("/api/meals", {
+      const mealResponse = await fetch(`${apiConfig.baseURL}/api/meals`, {
         method: "POST",
+
+        credentials: "include",
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -195,13 +201,16 @@ export default function MealPlanner() {
       const weekStartDate = currentWeek[0].toISOString().split("T")[0]
 
       // Check if we already have a meal plan for this day
-      const planResponse = await fetch(`/api/meal-plans/day/${mealData.day}/${weekStartDate}`)
+      const planResponse = await fetch(`${apiConfig.baseURL}/api/meal-plans/day/${mealData.day}/${weekStartDate}`)
       const planData = await planResponse.json()
 
       if (planData.mealPlan) {
         // Add meal to existing plan
-        await fetch(`/api/meal-plans/${planData.mealPlan._id}/meals`, {
+        await fetch(`${apiConfig.baseURL}/api/meal-plans/${planData.mealPlan._id}/meals`, {
           method: "POST",
+
+          credentials: "include",
+
           headers: {
             "Content-Type": "application/json",
           },
@@ -209,8 +218,11 @@ export default function MealPlanner() {
         })
       } else {
         // Create new plan with this meal
-        await fetch("/api/meal-plans", {
+        await fetch(`${apiConfig.baseURL}/api/meal-plans`, {
           method: "POST",
+
+          credentials: "include",
+
           headers: {
             "Content-Type": "application/json",
           },
@@ -238,8 +250,11 @@ export default function MealPlanner() {
 
   async function handleEditMeal(mealData) {
     try {
-      const response = await fetch(`/api/meals/${editingMeal.id}`, {
+      const response = await fetch(`${apiConfig.baseURL}/api/meals/${editingMeal.id}`, {
         method: "PATCH",
+
+        credentials: "include",
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -265,8 +280,11 @@ export default function MealPlanner() {
 
   async function handleDeleteMeal(mealId) {
     try {
-      const response = await fetch(`/api/meals/${mealId}`, {
+      const response = await fetch(`${apiConfig.baseURL}/api/meals/${mealId}`, {
         method: "DELETE",
+
+        credentials: "include",
+
       })
 
       if (!response.ok) {
@@ -330,9 +348,8 @@ export default function MealPlanner() {
           <button
             key={item.path}
             onClick={() => navigate(item.path)}
-            className={`flex items-center px-3 py-2 mr-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${
-              isActive(item.path) ? "bg-violet-600 text-white shadow-[13px]" : "text-gray-600 hover:bg-gray-100"
-            }`}
+            className={`flex items-center px-3 py-2 mr-2 text-[13px] rounded-md whitespace-nowrap transition-colors ${isActive(item.path) ? "bg-violet-600 text-white shadow-[13px]" : "text-gray-600 hover:bg-gray-100"
+              }`}
           >
             <item.icon className="mr-1.5 h-3.5 w-3.5" />
             {item.name}
@@ -359,11 +376,10 @@ export default function MealPlanner() {
         {daysOfWeek.map((day, index) => (
           <button
             key={day}
-            className={`px-3 py-2 text-[13px] ${
-              selectedDay === day
-                ? "border-b-2 border-violet-600 text-violet-600 font-medium"
-                : "text-gray-600 hover:text-gray-900"
-            }`}
+            className={`px-3 py-2 text-[13px] ${selectedDay === day
+              ? "border-b-2 border-violet-600 text-violet-600 font-medium"
+              : "text-gray-600 hover:text-gray-900"
+              }`}
             onClick={() => setSelectedDay(day)}
           >
             <div>{day.substring(0, 3)}</div>

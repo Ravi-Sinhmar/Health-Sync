@@ -4,41 +4,80 @@ const MealLog = require("../models/MealLog")
 // Create a new meal
 exports.createMeal = async (req, res) => {
   try {
-    req.body.student = req.student.studentId
+    console.log(req.body);
 
-    const meal = await Meal.create(req.body)
+    // Ensure req.user exists and has student ID
+    if (!req.user || !req.user.id) {
+      return res.status(400).json({ msg: "User authentication required" });
+    }
+
+    // Add student ID to request body
+    req.body.student = req.user.id;
+
+    const meal = await Meal.create(req.body);
+    console.log("Hi meal", meal);
 
     // If date is provided, add to meal log
     if (req.body.date) {
       let mealLog = await MealLog.findOne({
-        student: req.student.studentId,
+        student: req.user.id,
         date: req.body.date,
-      })
+      });
 
       if (mealLog) {
-        // Add to existing log
-        mealLog.meals.push(meal._id)
-        await mealLog.save()
+        mealLog.meals.push(meal._id);
+        await mealLog.save();
       } else {
-        // Create new log
         mealLog = await MealLog.create({
           date: req.body.date,
           meals: [meal._id],
-          student: req.student.studentId,
-        })
+          student: req.user.id, // Ensure correct reference
+        });
       }
     }
 
-    res.status(201).json({ meal })
+    res.status(201).json({ meal });
   } catch (error) {
-    res.status(400).json({ msg: error.message })
+    console.log(error);
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 // Get all meals for a student
 exports.getAllMeals = async (req, res) => {
   try {
-    const meals = await Meal.find({ student: req.student.studentId }).sort("-createdAt")
+    const meals = await Meal.find({ student: req.user.id }).sort("-createdAt")
+
+    res.status(200).json({ meals, count: meals.length })
+  } catch (error) {
+    res.status(500).json({ msg: error.message })
+  }
+}
+
+// Get meals for a specific date
+exports.getMealsByDate = async (req, res) => {
+  try {
+    const { date } = req.params
+
+    if (!date) {
+      return res.status(400).json({ msg: "Please provide a date" })
+    }
+
+    // Find meal log for the date
+    const mealLog = await MealLog.findOne({
+      student: req.user.id,
+      date,
+    })
+
+    if (!mealLog) {
+      return res.status(200).json({ meals: [] })
+    }
+
+    // Get all meals from the meal log
+    const meals = await Meal.find({
+      _id: { $in: mealLog.meals },
+      student: req.user.id,
+    }).sort("time")
 
     res.status(200).json({ meals, count: meals.length })
   } catch (error) {
@@ -53,7 +92,7 @@ exports.getMeal = async (req, res) => {
 
     const meal = await Meal.findOne({
       _id: mealId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!meal) {
@@ -71,7 +110,7 @@ exports.updateMeal = async (req, res) => {
   try {
     const { id: mealId } = req.params
 
-    const meal = await Meal.findOneAndUpdate({ _id: mealId, student: req.student.studentId }, req.body, {
+    const meal = await Meal.findOneAndUpdate({ _id: mealId, student: req.user.id }, req.body, {
       new: true,
       runValidators: true,
     })
@@ -93,7 +132,7 @@ exports.deleteMeal = async (req, res) => {
 
     const meal = await Meal.findOneAndDelete({
       _id: mealId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!meal) {
@@ -101,7 +140,7 @@ exports.deleteMeal = async (req, res) => {
     }
 
     // Remove from any meal logs
-    await MealLog.updateMany({ student: req.student.studentId }, { $pull: { meals: mealId } })
+    await MealLog.updateMany({ student: req.user.id }, { $pull: { meals: mealId } })
 
     res.status(200).json({ msg: "Meal removed" })
   } catch (error) {
@@ -116,7 +155,7 @@ exports.toggleMealCompletion = async (req, res) => {
 
     const meal = await Meal.findOne({
       _id: mealId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!meal) {

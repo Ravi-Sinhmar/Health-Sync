@@ -11,7 +11,7 @@ exports.authenticate = (req, res, next) => {
   try {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET || "your_jwt_secret")
-
+    console.log(decoded);
     // Add user from payload to request
     req.user = decoded
     next();

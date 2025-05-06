@@ -49,6 +49,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext"
 import HealthEdit from "./pages/HealthEdit"
 import MealPlanner from "./pages/MealPlanner"
 import MealTracker from "./pages/MealTracker"
+import ChatPage from "./pages/ChatPage"
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -92,12 +93,12 @@ function AppLayout({ children }) {
   const isOverlay = useRecoilValue(overlayState);
   return (
     <>
-     {isOverlay && <OverlayBackround />}
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">{children}</main>
-      <Footer />
-    </div>
+      {isOverlay && <OverlayBackround />}
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </div>
     </>
   )
 }
@@ -111,14 +112,30 @@ function App() {
           <Routes>
             {/* Public Routes */}
 
+
+
             <Route
               path="/dashboard"
               element={
-                <AppLayout>
-                  <StudentHealthDashboard />
-                </AppLayout>
+                <ProtectedRoute>
+                  <AppLayout>
+                    <StudentHealthDashboard />
+                  </AppLayout>
+                </ProtectedRoute>
               }
             />
+
+            <Route
+              path="/chat"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <ChatPage />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+
 
             <Route
               path="/"
@@ -165,13 +182,13 @@ function App() {
             <Route
               path="/set-password"
               element={
-                  <SetPassword />
+                <SetPassword />
               }
             />
             <Route
               path="/complete-profile"
               element={
-                  <CompleteProfile />
+                <CompleteProfile />
               }
             />
 
@@ -324,8 +341,8 @@ function App() {
             />
 
 
-{/* Meal Planner and Meal tracker */}
-<Route
+            {/* Meal Planner and Meal tracker */}
+            <Route
               path="/meal/planner"
               element={
                 <ProtectedRoute>
@@ -336,7 +353,7 @@ function App() {
               }
             />
 
-<Route
+            <Route
               path="/meal/tracker"
               element={
                 <ProtectedRoute>

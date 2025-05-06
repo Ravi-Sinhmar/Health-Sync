@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import apiConfig from "../config/api"
 import { ArrowLeft, Calculator, Calendar, Utensils, Activity } from "lucide-react"
 import { useNavigate, useLocation } from "react-router-dom"
 
@@ -28,7 +29,10 @@ export default function ProteinCalculator() {
     if (!weight) return
 
     try {
-      const response = await fetch("/api/health-metrics/calculate-protein", {
+      const response = await fetch(`${apiConfig.baseURL}/api/health-metrics/calculate-protein`, {
+        
+          credentials: "include",
+        
         method: "POST",
         headers: {
           "Content-Type": "application/json",

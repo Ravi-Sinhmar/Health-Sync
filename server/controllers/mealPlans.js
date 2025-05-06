@@ -12,7 +12,7 @@ exports.createMealPlan = async (req, res) => {
 
     // Check if meal plan already exists for this day and week
     const existingPlan = await MealPlan.findOne({
-      student: req.student.studentId,
+      student: req.user.id,
       day,
       weekStartDate: new Date(weekStartDate),
     })
@@ -32,7 +32,7 @@ exports.createMealPlan = async (req, res) => {
       day,
       weekStartDate: new Date(weekStartDate),
       meals: meals || [],
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     const populatedPlan = await MealPlan.findById(mealPlan._id).populate("meals")
@@ -57,7 +57,7 @@ exports.getMealPlansByWeek = async (req, res) => {
     endDate.setDate(endDate.getDate() + 6)
 
     const mealPlans = await MealPlan.find({
-      student: req.student.studentId,
+      student: req.user.id,
       weekStartDate: {
         $gte: startDate,
         $lte: endDate,
@@ -82,7 +82,7 @@ exports.getMealPlanByDay = async (req, res) => {
     }
 
     const mealPlan = await MealPlan.findOne({
-      student: req.student.studentId,
+      student: req.user.id,
       day,
       weekStartDate: new Date(weekStartDate),
     }).populate("meals")
@@ -110,7 +110,7 @@ exports.addMealToPlan = async (req, res) => {
     // Verify meal exists and belongs to student
     const meal = await Meal.findOne({
       _id: mealId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!meal) {
@@ -119,7 +119,7 @@ exports.addMealToPlan = async (req, res) => {
 
     const mealPlan = await MealPlan.findOne({
       _id: planId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!mealPlan) {
@@ -147,7 +147,7 @@ exports.removeMealFromPlan = async (req, res) => {
 
     const mealPlan = await MealPlan.findOne({
       _id: planId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!mealPlan) {
@@ -173,7 +173,7 @@ exports.deleteMealPlan = async (req, res) => {
 
     const mealPlan = await MealPlan.findOneAndDelete({
       _id: planId,
-      student: req.student.studentId,
+      student: req.user.id,
     })
 
     if (!mealPlan) {

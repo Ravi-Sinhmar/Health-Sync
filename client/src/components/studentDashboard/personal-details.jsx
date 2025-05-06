@@ -1,7 +1,25 @@
 import { ClipboardList } from "lucide-react"
 
-export default function PersonalDetails() {
-  // This is a placeholder component - replace with your actual implementation
+export default function PersonalDetails({ data, loading }) {
+  if (loading) {
+    return (
+      <div className="bg-white shadow-[13px] rounded-md p-4 border border-gray-200 animate-pulse">
+        <div className="flex items-center mb-3">
+          <div className="h-4 w-4 bg-gray-200 rounded-full mr-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="space-y-1">
+              <div className="h-3 bg-gray-200 rounded w-1/3"></div>
+              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="bg-white shadow-[13px] rounded-md p-4 border border-gray-200">
       <div className="flex items-center mb-3">
@@ -12,19 +30,19 @@ export default function PersonalDetails() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[13px]">
         <div>
           <p className="text-gray-500">Date of Birth</p>
-          <p className="font-medium">15 May 2006</p>
+          <p className="font-medium">{data?.dob || "N/A"}</p>
         </div>
         <div>
           <p className="text-gray-500">Gender</p>
-          <p className="font-medium">Male</p>
+          <p className="font-medium">{data?.gender || "N/A"}</p>
         </div>
         <div>
           <p className="text-gray-500">Blood Group</p>
-          <p className="font-medium">O+</p>
+          <p className="font-medium">{data?.bloodGroup || "N/A"}</p>
         </div>
         <div>
           <p className="text-gray-500">Emergency Contact</p>
-          <p className="font-medium">+1 (555) 123-4567</p>
+          <p className="font-medium">{data?.emergencyContact?.phone || data?.phone || "N/A"}</p>
         </div>
       </div>
     </div>

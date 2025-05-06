@@ -297,6 +297,7 @@ exports.getAllStudents = async (req, res) => {
 exports.getStudentProfile = async (req, res) => {
   try {
     const { email } = req.user;
+    console.log("User email",req.user.email);
 
     // Find student profile
     const student = await Student.findOne({ email });
