@@ -1,8 +1,25 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite';
+import vercel from 'vite-plugin-vercel'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),tailwindcss()],
+  plugins: [react(), vercel()],
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          vendor: ['date-fns', 'lucide-react']
+        }
+      }
+    }
+  },
+  server: {
+    port: 3000
+  },
+  preview: {
+    port: 3000
+  }
 })
