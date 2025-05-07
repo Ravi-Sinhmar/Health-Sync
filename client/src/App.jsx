@@ -27,7 +27,7 @@ import Help from "./pages/Help"
 import WorkoutApp from "./pages/WorkApp"
 import WorkoutDashboard from "./pages/WorkDashboard"
 import ActiveWorkout from "./pages/ActiveWork"
-import ExerciseLibrary from "./pages/ExerciseLibrary"
+import ExerciseLibrary from "./pages/ExerciseLib"
 import WorkoutHistory from "./pages/WorkHistory"
 import CreateWorkout from "./pages/CreateWork"
 

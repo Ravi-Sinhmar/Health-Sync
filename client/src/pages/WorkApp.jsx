@@ -4,7 +4,7 @@ import { useState } from "react"
 import { RecoilRoot } from "recoil"
 import WorkoutDashboard from "./WorkDashboard"
 import ActiveWorkout from "./ActiveWork"
-import ExerciseLibrary from "./ExerciseLibrary"
+import ExerciseLibrary from "./ExerciseLib"
 import WorkoutHistory from "./WorkHistory"
 import CreateWorkout from "./CreateWork"
 
