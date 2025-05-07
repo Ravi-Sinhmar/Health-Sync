@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRecoilState } from "recoil"
 import { activeWorkoutState } from "../state/workoutState"
-import RestTimer from "./RestTimer"
+import RestTimer from "./RestTime"
 import { Clock, CheckCircle, Check, SkipForward, ClipboardList, Timer, Settings } from 'lucide-react'
 import apiConfig from "../config/api"
 
