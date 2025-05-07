@@ -2,11 +2,11 @@
 
 import { useState } from "react"
 import { RecoilRoot } from "recoil"
-import WorkoutDashboard from "./WorkoutDashboard"
+import WorkoutDashboard from "./WorkDashboard"
 import ActiveWorkout from "./ActiveWorkout"
 import ExerciseLibrary from "./ExerciseLibrary"
-import WorkoutHistory from "./WorkoutHistory"
-import CreateWorkout from "./CreateWorkout"
+import WorkoutHistory from "./WorkHistory"
+import CreateWorkout from "./CreateWork"
 
 export default function WorkoutApp() {
   const [activeTab, setActiveTab] = useState("dashboard")

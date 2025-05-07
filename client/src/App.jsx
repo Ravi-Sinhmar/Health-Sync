@@ -24,12 +24,12 @@ import Users from "./pages/Users"
 import Help from "./pages/Help"
 
 // Workout Tracking Pages
-import WorkoutApp from "./pages/WorkoutApp"
-import WorkoutDashboard from "./pages/WorkoutDashboard"
+import WorkoutApp from "./pages/WorkApp"
+import WorkoutDashboard from "./pages/WorkDashboard"
 import ActiveWorkout from "./pages/ActiveWorkout"
 import ExerciseLibrary from "./pages/ExerciseLibrary"
-import WorkoutHistory from "./pages/WorkoutHistory"
-import CreateWorkout from "./pages/CreateWorkout"
+import WorkoutHistory from "./pages/WorkHistory"
+import CreateWorkout from "./pages/CreateWork"
 
 
 // Meal planner/tracker , protein calculator
