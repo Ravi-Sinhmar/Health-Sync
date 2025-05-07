@@ -24,7 +24,7 @@ import Users from "./pages/Users"
 import Help from "./pages/Help"
 
 // Workout Tracking Pages
-import WorkoutApp from "./pages/workoutApp"
+import WorkoutApp from "./pages/WorkoutApp"
 import WorkoutDashboard from "./pages/WorkoutDashboard"
 import ActiveWorkout from "./pages/ActiveWorkout"
 import ExerciseLibrary from "./pages/ExerciseLibrary"
@@ -50,6 +50,8 @@ import HealthEdit from "./pages/HealthEdit"
 import MealPlanner from "./pages/MealPlanner"
 import MealTracker from "./pages/MealTracker"
 import ChatPage from "./pages/ChatPage"
+import StandaloneAuthenticationConfig from "./pages/Test/StandaloneAuthenticationConfig"
+import StandaloneConfiguration from "./pages/Test/StandaloneConfiguration"
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -110,8 +112,31 @@ function App() {
         <Router>
           <Toaster position="top-right" />
           <Routes>
-            {/* Public Routes */}
+           
 
+
+
+{/* Ignore these , testing route */}
+            <Route
+              path="/t1"
+              element={
+                <PublicRoute>
+                  <StandaloneAuthenticationConfig />
+                </PublicRoute>
+              }
+            />
+
+<Route
+              path="/t2"
+              element={
+                <PublicRoute>
+                  <StandaloneConfiguration />
+                </PublicRoute>
+              }
+            />
+
+
+{/* Start from here */}
 
 
             <Route
