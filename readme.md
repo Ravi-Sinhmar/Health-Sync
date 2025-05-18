@@ -18,9 +18,7 @@ A comprehensive health management platform for students and athletes built with 
 6. [Data Flow](#data-flow)
 7. [Security Implementation](#security-implementation)
 8. [AI Integration](#ai-integration)
-9. [Deployment](#deployment)
-10. [Maintenance](#maintenance)
-11. [Troubleshooting](#troubleshooting)
+
 
 ## System Overview
 
