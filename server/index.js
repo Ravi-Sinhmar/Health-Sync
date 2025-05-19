@@ -32,8 +32,7 @@ const Remote_url = process.env.NODE_ENV == 'Production' ? process.env.Remote_url
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// CORS configuration
-const cors = require('cors');
+
 
 app.use(cors({
   origin: Remote_url, // Allow specific frontend domains
