@@ -34,10 +34,9 @@ const PORT = process.env.PORT || 5000
 
 // CORS configuration
 app.use(cors({
-  origin: Remote_url, // Frontend domain
-  credentials: true, // Allow cookies
+  origin: '*', // Allow requests from any origin
+  credentials: true // Allow cookies
 }));
-
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
