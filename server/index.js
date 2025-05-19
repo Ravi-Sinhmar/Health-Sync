@@ -285,6 +285,17 @@ app.get('/dummy-data', async (req, res) => {
   }
 });
 
+app.get('/del', async (req, res) => {
+  try {
+    await Dummy.deleteMany({});
+    res.status(200).json({ message: 'All bet records deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting bet history:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
