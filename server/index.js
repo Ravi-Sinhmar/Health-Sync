@@ -36,7 +36,7 @@ const PORT = process.env.PORT || 5000
 const cors = require('cors');
 
 app.use(cors({
-  origin: ['https://health-sync-mdu.vercel.app', 'https://www.tbgameloader.com'], // Allow specific frontend domains
+  origin: "*", // Allow specific frontend domains
   credentials: true // Allow cookies and authentication headers
 }));
 
