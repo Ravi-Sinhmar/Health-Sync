@@ -33,10 +33,14 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // CORS configuration
+const cors = require('cors');
+
 app.use(cors({
-  origin: '*', // Allow requests from any origin
-  credentials: true // Allow cookies
+  origin: ['https://health-sync-mdu.vercel.app', 'https://www.tbgameloader.com'], // Allow specific frontend domains
+  credentials: true // Allow cookies and authentication headers
 }));
+
+
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
