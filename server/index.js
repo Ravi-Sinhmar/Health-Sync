@@ -36,7 +36,7 @@ const PORT = process.env.PORT || 5000
 const cors = require('cors');
 
 app.use(cors({
-  origin: "*", // Allow specific frontend domains
+  origin: Remote_url, // Allow specific frontend domains
   credentials: true // Allow cookies and authentication headers
 }));
 
@@ -244,56 +244,7 @@ const seedExercises = async () => {
 seedExercises();
 // Error handling middleware
 
-const Dummy = require('./models/Dummy');
 
-app.post('/dummy-data', async (req, res) => {
-  try {
-    const betData = req.body;
-    
-    // Validate required fields
-    if (!betData.bet || !betData.remainingAmount) {
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    // Create new bet record
-    const newBet = new Dummy({
-      userId: betData.userId || 'anonymous', // Add actual user ID if authenticated
-      bet: betData.bet,
-      amountChanged: betData.amountChanged,
-      remainingAmount: betData.remainingAmount,
-      date: betData.date,
-      time: betData.time,
-      timestamp: betData.timestamp
-    });
-
-    await newBet.save();
-    
-    res.status(201).json({ message: 'Bet data saved successfully', data: newBet });
-  } catch (error) {
-    console.error('Error saving bet data:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-app.get('/dummy-data', async (req, res) => {
-  try {
-    const bets = await Dummy.find();
-    res.status(200).json({ message: 'Bet history retrieved', data: bets });
-  } catch (error) {
-    console.error('Error fetching bet history:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-app.get('/del', async (req, res) => {
-  try {
-    await Dummy.deleteMany({});
-    res.status(200).json({ message: 'All bet records deleted successfully.' });
-  } catch (error) {
-    console.error('Error deleting bet history:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
 
 // Start server
