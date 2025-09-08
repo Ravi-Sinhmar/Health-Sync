@@ -111,6 +111,7 @@ const Header = () => {
                                 </button>
                             ) : (
                                 <>
+                              
                                     <Link 
                                         to="/login" 
                                         className="text-gray-600 hover:text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors"
@@ -135,6 +136,8 @@ const Header = () => {
                                 <Link to="/" className="flex items-center">
                                     <span className="text-xl font-bold text-violet-600">Health Sync</span>
                                 </Link>
+
+    
                             </div>
 
                             <nav className="flex items-center space-x-1">
@@ -201,6 +204,38 @@ const Header = () => {
                                     <span className="text-xl font-bold text-violet-600">Health Sync</span>
                                 </Link>
                             </div>
+                              <nav className="hidden md:flex items-center gap-6">
+            <Link 
+              to="/" 
+              className="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors"
+            >
+              Home
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors"
+            >
+              Contact
+            </Link>
+            <Link 
+              to="/privacy" 
+              className="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors"
+            >
+              Privacy
+            </Link>
+            <Link 
+              to="/terms" 
+              className="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors"
+            >
+              Terms
+            </Link>
+            <Link 
+              to="/refund" 
+              className="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors"
+            >
+              Refund
+            </Link>
+          </nav>
                             <div className="flex items-center gap-4">
                                 <Link 
                                     to="/login" 

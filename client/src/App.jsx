@@ -52,6 +52,10 @@ import MealTracker from "./pages/MealTracker"
 import ChatPage from "./pages/ChatPage"
 import StandaloneAuthenticationConfig from "./pages/Test/StandaloneAuthenticationConfig"
 import StandaloneConfiguration from "./pages/Test/StandaloneConfiguration"
+import PrivacyPage from "./pages/PolicyPages/PrivacyPage"
+import ContactPage from "./pages/PolicyPages/ContactPage"
+import RefundPage from "./pages/PolicyPages/RefundPage"
+import TermsPage from "./pages/PolicyPages/TermsPage"
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -167,6 +171,43 @@ function App() {
               element={
                 <AppLayout>
                   <Home />
+                </AppLayout>
+              }
+            />
+
+                  <Route
+              path="/privacy"
+              element={
+                <AppLayout>
+                  <PrivacyPage />
+                </AppLayout>
+              }
+            />
+                      <Route
+              path="/contact"
+              element={
+                <AppLayout>
+                  <ContactPage />
+                </AppLayout>
+              }
+
+
+            />
+
+                        <Route
+              path="/refund"
+              element={
+                <AppLayout>
+                  <RefundPage />
+                </AppLayout>
+              }
+            />
+
+                        <Route
+              path="/terms"
+              element={
+                <AppLayout>
+                  <TermsPage />
                 </AppLayout>
               }
             />

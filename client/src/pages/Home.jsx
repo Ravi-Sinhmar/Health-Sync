@@ -2,7 +2,6 @@ import Header from "./../components/layout/Header"
 import { Activity, Apple, Utensils, LineChart, Calendar, Award } from "lucide-react"
 import { Link } from "react-router-dom"
 
-
 const Home = () => {
   return (
     <div className="min-h-screen bg-white">
@@ -45,6 +44,118 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+         {/* Subscription Plans Section */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Choose Your Health Sync Plan</h2>
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Unlock the full potential of Health Sync with our affordable plans, designed to empower students with personalized health insights and AI-driven recommendations.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-violet-100 relative overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl flex flex-col">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-violet-500 to-purple-500"></div>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900">Essential Plan</h3>
+                <div className="mt-3">
+                  <span className="text-4xl font-bold text-violet-600">₹499</span>
+                  <span className="text-gray-600 text-lg">/month</span>
+                </div>
+                <p className="text-sm text-gray-500 mt-2">Or ₹4,999/year (save 17%)</p>
+              </div>
+              <ul className="space-y-4 text-gray-600 mb-8 flex-grow">
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Track essential health metrics like BMI, activity, and sleep</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Access workout history and basic analytics</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Log daily meals with nutritional insights</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Community support for motivation</span>
+                </li>
+              </ul>
+              <Link to="/register" className="mt-auto">
+                <button className="w-full bg-violet-600 hover:bg-violet-700 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md">
+                  Start Essential Plan
+                </button>
+              </Link>
+              <p className="text-xs text-gray-500 mt-3 text-center">7-day money-back guarantee</p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-violet-100 relative overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl flex flex-col">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-violet-500 to-purple-500"></div>
+              <div className="absolute top-0 right-0 bg-violet-600 text-white text-sm font-semibold px-4 py-1.5 rounded-bl-lg rounded-tr-lg">
+                Most Popular
+              </div>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900">Pro Plan</h3>
+                <div className="mt-3">
+                  <span className="text-4xl font-bold text-violet-600">₹799</span>
+                  <span className="text-gray-600 text-lg">/month</span>
+                </div>
+                <p className="text-sm text-gray-500 mt-2">Or ₹7,999/year (save 17%)</p>
+              </div>
+              <ul className="space-y-4 text-gray-600 mb-8 flex-grow">
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Everything in Essential Plan</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Advanced health analytics with detailed trends</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Personalized workout plans tailored to goals</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>AI-powered nutrition recommendations</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-violet-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Priority support and integrated health calendar</span>
+                </li>
+              </ul>
+              <Link to="/register" className="mt-auto">
+                <button className="w-full bg-violet-600 hover:bg-violet-700 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md">
+                  Start Pro Plan
+                </button>
+              </Link>
+              <p className="text-xs text-gray-500 mt-3 text-center">7-day money-back guarantee</p>
+            </div>
+          </div>
+          <div className="text-center mt-8 text-sm text-gray-500">
+            <p>By subscribing, you agree to our <Link to="/terms" className="text-violet-600 hover:underline">Terms of Service</Link>, <Link to="/privacy" className="text-violet-600 hover:underline">Privacy Policy</Link>, and <Link to="/refund" className="text-violet-600 hover:underline">Refund Policy</Link>.</p>
           </div>
         </div>
       </section>
@@ -133,7 +244,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Final Section - Based on second image */}
+   
+
+      {/* Final Section - Nutrition & Wellness Benefits */}
       <section className="py-16 px-6">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center mb-12">
@@ -154,48 +267,47 @@ const Home = () => {
               />
             </div>
 
-  <div className="bg-yellow-100 p-8 rounded-2xl shadow-[13px] border border-gray-100 h-full ">
-    <h3 className="text-2xl font-bold text-gray-800 mb-6">Nutrition & Wellness Benefits</h3>
-    
-    <div className="space-y-6">
-      <div className="flex">
-        <div className="bg-yellow-100 p-2 rounded-lg mr-4">
-          <svg className="h-5 w-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-          </svg>
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-800">Improved Energy Levels</h4>
-          <p className="text-gray-600 text-[13px] mt-1">Balanced nutrition provides sustained energy throughout the day</p>
-        </div>
-      </div>
+            <div className="bg-yellow-100 p-8 rounded-2xl shadow-[13px] border border-gray-100 h-full">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Nutrition & Wellness Benefits</h3>
+              
+              <div className="space-y-6">
+                <div className="flex">
+                  <div className="bg-yellow-100 p-2 rounded-lg mr-4">
+                    <svg className="h-5 w-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Improved Energy Levels</h4>
+                    <p className="text-gray-600 text-[13px] mt-1">Balanced nutrition provides sustained energy throughout the day</p>
+                  </div>
+                </div>
 
-      <div className="flex">
-        <div className="bg-violet-100 p-2 rounded-lg mr-4">
-          <svg className="h-5 w-5 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-800">Stronger Immunity</h4>
-          <p className="text-gray-600 text-[13px] mt-1">Nutrient-rich foods boost your body's natural defenses</p>
-        </div>
-      </div>
+                <div className="flex">
+                  <div className="bg-violet-100 p-2 rounded-lg mr-4">
+                    <svg className="h-5 w-5 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Stronger Immunity</h4>
+                    <p className="text-gray-600 text-[13px] mt-1">Nutrient-rich foods boost your body's natural defenses</p>
+                  </div>
+                </div>
 
-      <div className="flex">
-        <div className="bg-green-100 p-2 rounded-lg mr-4">
-          <svg className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-800">Better Mental Health</h4>
-          <p className="text-gray-600 text-[13px] mt-1">Proper nutrition supports brain function and emotional wellbeing</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
+                <div className="flex">
+                  <div className="bg-green-100 p-2 rounded-lg mr-4">
+                    <svg className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Better Mental Health</h4>
+                    <p className="text-gray-600 text-[13px] mt-1">Proper nutrition supports brain function and emotional wellbeing</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -204,4 +316,3 @@ const Home = () => {
 }
 
 export default Home
-

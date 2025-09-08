@@ -24,7 +24,7 @@ export default function PersonalDetails() {
         </div>
         <div>
           <p className="text-gray-500">Emergency Contact</p>
-          <p className="font-medium">+1 (555) 123-4567</p>
+          <p className="font-medium">+918295236618</p>
         </div>
       </div>
     </div>
