@@ -235,6 +235,12 @@ const Header = () => {
             >
               Refund
             </Link>
+             <Link 
+              to="/shipping" 
+              className="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors"
+            >
+              Shipping
+            </Link>
           </nav>
                             <div className="flex items-center gap-4">
                                 <Link 

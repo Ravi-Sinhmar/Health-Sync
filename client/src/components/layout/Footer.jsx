@@ -65,6 +65,13 @@ const Footer = () => {
                   Refund Policy
                 </Link>
               </li>
+               <li>
+                <Link to="/shipping" className="text-[13px] text-gray-300 hover:text-white">
+                  Shipping
+                </Link>
+              </li>
+
+
               <li>
                 <Link to="/contact" className="text-[13px] text-gray-300 hover:text-white">
                   Contact Us

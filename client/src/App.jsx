@@ -56,6 +56,7 @@ import PrivacyPage from "./pages/PolicyPages/PrivacyPage"
 import ContactPage from "./pages/PolicyPages/ContactPage"
 import RefundPage from "./pages/PolicyPages/RefundPage"
 import TermsPage from "./pages/PolicyPages/TermsPage"
+import ShippingPage from "./pages/PolicyPages/ShippingPage"
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -208,6 +209,15 @@ function App() {
               element={
                 <AppLayout>
                   <TermsPage />
+                </AppLayout>
+              }
+            />
+            
+                        <Route
+              path="/shipping"
+              element={
+                <AppLayout>
+                  <ShippingPage />
                 </AppLayout>
               }
             />
